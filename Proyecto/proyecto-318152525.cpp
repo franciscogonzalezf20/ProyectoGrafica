@@ -208,6 +208,8 @@ Model drunkenclaim_M;
 Model ErnieFG_M;
 Model HouseFG_M;
 Model monoFG_M;
+Model perroFG_M;
+Model ruppertFG_M;
 
 
 
@@ -546,6 +548,12 @@ int main()
 
 	monoFG_M = Model();
 	monoFG_M.LoadModel("Models/monoFG.obj");
+
+	perroFG_M = Model();
+	perroFG_M.LoadModel("Models/perroFG.obj");
+
+	ruppertFG_M = Model();
+	ruppertFG_M.LoadModel("Models/ruppertFG.obj");
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -1120,36 +1128,53 @@ int main()
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//vinyFG_M.RenderModel();
 
-		//drunkenclaim
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(96.0f, -15.0f, 170.0));
-		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		drunkenclaim_M.RenderModel();
+		////drunkenclaim
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(96.0f, -15.0f, 170.0));
+		//model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//drunkenclaim_M.RenderModel();
 
-		//Ernie
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(72.0f, -23.0f, 170.0));
-		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
-		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		ErnieFG_M.RenderModel();
+		////Ernie
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(72.0f, -23.0f, 170.0));
+		//model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//ErnieFG_M.RenderModel();
 
-		//Casa gryfin
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(56.0f, -23.0f, 170.0));
-		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		HouseFG_M.RenderModel();
+		////Casa gryfin
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(56.0f, -23.0f, 170.0));
+		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//HouseFG_M.RenderModel();
 
-		//mono malvado
+		////mono malvado
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(25.0f, -25.0f, 170.0));
+		//model = glm::scale(model, glm::vec3(8.0f, 8.0f, 8.0f));
+		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//monoFG_M.RenderModel();
+
+		////perro
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(0.0f, -28.0f, 170.0));
+		//model = glm::scale(model, glm::vec3(25.0f, 25.0f, 25.0f));
+		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//perroFG_M.RenderModel();
+
+		//ruppert
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(25.0f, -25.0f, 170.0));
-		model = glm::scale(model, glm::vec3(8.0f, 8.0f, 8.0f));
-		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-30.0f, -33.0f, 170.0));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		monoFG_M.RenderModel();
+		ruppertFG_M.RenderModel();
+
+
 
 
 
