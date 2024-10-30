@@ -580,11 +580,11 @@ int main()
 	RMdinoI = Texture("Textures/RMdinoI.png");
 	RMdinoI.LoadTextureA();
 
-	RMgarageD = Texture("Textures/RMgarageD.png");
+	RMgarageD = Texture("Textures/RMgarajeD.png");
 	RMgarageD.LoadTextureA();
-	RMgarageN = Texture("Textures/RMgarageN.png");
+	RMgarageN = Texture("Textures/RMgarajeN.png");
 	RMgarageN.LoadTextureA();
-	RMgarageI = Texture("Textures/RMgarageI.png");
+	RMgarageI = Texture("Textures/RMgarajeI.png");
 	RMgarageI.LoadTextureA();
 
 	RMgatoD = Texture("Textures/RMgatoD.png");
