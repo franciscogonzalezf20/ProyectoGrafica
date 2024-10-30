@@ -1,9 +1,9 @@
 /*
 Semestre 2024-1
-Animaci髇:
-Sesi髇 1:
-Simple o b醩ica:Por banderas y condicionales (m醩 de 1 transforomaci髇 geom閠rica se ve modificada
-Sesi髇 2
+Animaci贸n:
+Sesi贸n 1:
+Simple o b谩sica:Por banderas y condicionales (m谩s de 1 transforomaci贸n geom茅trica se ve modificada
+Sesi贸n 2
 Compleja: Por medio de funciones y algoritmos.
 Adicional.- ,Textura Animada
 */
@@ -36,7 +36,7 @@ Adicional.- ,Textura Animada
 #include"Model.h"
 #include "Skybox.h"
 
-//para iluminaci髇
+//para iluminaci贸n
 #include "CommonValues.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
@@ -44,7 +44,7 @@ Adicional.- ,Textura Animada
 #include "Material.h"
 const float toRadians = 3.14159265f / 180.0f;
 
-//variables para animaci髇
+//variables para animaci贸n
 float movAvion;
 float movAvionX;
 float movLetrero;
@@ -169,49 +169,49 @@ Model Marceline_M;
 Model FlameP_M;
 
 
-Model Arc_M;
-Model Letrero_M;
+//Model Arc_M;
+//Model Letrero_M;
 Model Mapa_M;
-Model Dado_M;
-Model Arboles_M;
-Model Castle_M;
-Model Bee_M;
-Model BMO_M;
-Model Unicorn_M;
-Model Hunters_M;
-Model CasArbol_M;
-Model Bobert_M;
-Model Jake_M;
-Model Horse_M;
-Model Prismo_M;
-Model rickpepinillo_M;
-Model rick_M;
-Model messek_M;
-Model jessica_M; 
-Model fleeb_M;
-Model robo_M;
-Model arbol1_M;
-Model arbolesDimension35_M;
-Model paisaje_M;
-Model Buttmouth_M; 
-Model dinosaurio_M;
-Model gato_M;
-Model gromflomite_M;
-Model snowball_M;
-Model escuela_M;
-Model garage_M;
-Model gun_M;
-Model nave_M;
-Model vinyFG_M;
-Model drunkenclaim_M; 
-Model ErnieFG_M;
-Model HouseFG_M;
-Model monoFG_M;
-Model perroFG_M;
-Model ruppertFG_M;
-Model caballo_M;
-Model toro_M;
-Model jasper_M;
+//Model Dado_M;
+//Model Arboles_M;
+//Model Castle_M;
+//Model Bee_M;
+//Model BMO_M;
+//Model Unicorn_M;
+//Model Hunters_M;
+//Model CasArbol_M;
+//Model Bobert_M;
+//Model Jake_M;
+//Model Horse_M;
+//Model Prismo_M;
+//Model rickpepinillo_M;
+//Model rick_M;
+//Model messek_M;
+//Model jessica_M; 
+//Model fleeb_M;
+//Model robo_M;
+//Model arbol1_M;
+//Model arbolesDimension35_M;
+//Model paisaje_M;
+//Model Buttmouth_M; 
+//Model dinosaurio_M;
+//Model gato_M;
+//Model gromflomite_M;
+//Model snowball_M;
+//Model escuela_M;
+//Model garage_M;
+//Model gun_M;
+//Model nave_M;
+//Model vinyFG_M;
+//Model drunkenclaim_M; 
+//Model ErnieFG_M;
+//Model HouseFG_M;
+//Model monoFG_M;
+//Model perroFG_M;
+//Model ruppertFG_M;
+//Model caballo_M;
+//Model toro_M;
+//Model jasper_M;
 
  
 
@@ -252,7 +252,7 @@ static const char* vShader = "shaders/shader_light.vert";
 static const char* fShader = "shaders/shader_light.frag";
 
 
-//funci髇 de calculo de normales por promedio de v閞tices 
+//funci贸n de calculo de normales por promedio de v茅rtices 
 void calcAverageNormals(unsigned int* indices, unsigned int indiceCount, GLfloat* vertices, unsigned int verticeCount,
 	unsigned int vLength, unsigned int normalOffset)
 {
@@ -351,14 +351,15 @@ void CreateObjects()
 	GLfloat casillaV[] = {
 		//x,y,-z
 		-0.5f, -0.5f, -0.5f,	0.0f, 0.0f,		0.0f, 0.0f, 1.0f,
-		0.5f, -0.5f, -0.5f,		1.0f, 0.0f,		0.0f, 0.0f, 1.0f,
-		0.5f, 0.5f, -0.5f,		1.0f, 1.0f,		0.0f, 0.0f, 1.0f,
-		-0.5f, 0.5f, -0.5f,		0.0f, 1.0f,		0.0f, 0.0f, 1.0f,
+		0.5f, -0.5f, -0.5f,		0.0f, 0.0f,		0.0f, 0.0f, 1.0f,
+		0.5f, 0.5f, -0.5f,		0.0f, 0.0f,		0.0f, 0.0f, 1.0f,
+		-0.5f, 0.5f, -0.5f,		0.0f, 0.0f,		0.0f, 0.0f, 1.0f,
 		//x,y,z
 		-0.5f, -0.5f, 0.5f,		0.0f, 0.0f,		0.0f, 0.0f, -1.0f,
-		0.5f, -0.5f, 0.5f,		1.0f, 0.0f,		0.0f, 0.0f, -1.0f,
-		0.5f, 0.5f, 0.5f,		1.0f, 1.0f,		0.0f, 0.0f, -1.0f,
-		-0.5f, 0.5f, 0.5f,		0.0f, 1.0f,		0.0f, 0.0f, -1.0f,
+		0.5f, -0.5f, 0.5f,		0.0f, 0.0f,		0.0f, 0.0f, -1.0f,
+		0.5f, 0.5f, 0.5f,		0.0f, 0.0f,		0.0f, 0.0f, -1.0f,
+		-0.5f, 0.5f, 0.5f,		0.0f, 0.0f,		0.0f, 0.0f, -1.0f,
+
 		//x,z,-y
 		0.5f, -0.5f, -0.5f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
 		0.5f, -0.5f, 0.5f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f,
@@ -366,19 +367,20 @@ void CreateObjects()
 		-0.5f, -0.5f, -0.5f,	0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
 		//x,z,y
 		0.5f, 0.5f, -0.5f,		0.0f, 0.0f,		0.0f, -1.0f, 0.0f,
-		0.5f, 0.5f, 0.5f,		1.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		0.5f, 0.5f, 0.5f,		0.0f, 1.0f,		0.0f, -1.0f, 0.0f,
 		-0.5f, 0.5f, 0.5f,		1.0f, 1.0f,		0.0f, -1.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,	0.0f, 1.0f,		0.0f, -1.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f,	1.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+
 		//z,y,x
 		0.5f, -0.5f, 0.5f,		0.0f, 0.0f,		-1.0f, 0.0f, 0.0f,
-		0.5f, -0.5f, -0.5f,		1.0f, 0.0f,		-1.0f, 0.0f, 0.0f,
-		0.5f, 0.5f, -0.5f,		1.0f, 1.0f,		-1.0f, 0.0f, 0.0f,
-		0.5f, 0.5f, 0.5f,		0.0f, 1.0f,		-1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, -0.5f,		0.0f, 0.0f,		-1.0f, 0.0f, 0.0f,
+		0.5f, 0.5f, -0.5f,		0.0f, 0.0f,		-1.0f, 0.0f, 0.0f,
+		0.5f, 0.5f, 0.5f,		0.0f, 0.0f,		-1.0f, 0.0f, 0.0f,
 		//z,y,-x
 		-0.5f, -0.5f, 0.5f,		0.0f, 0.0f,		1.0f, 0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f,	1.0f, 0.0f,		1.0f, 0.0f, 0.0f,
-		-0.5f, 0.5f, -0.5f,		1.0f, 1.0f,		1.0f, 0.0f, 0.0f,
-		-0.5f, 0.5f, 0.5f,		0.0f, 1.0f,		1.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f,	0.0f, 0.0f,		1.0f, 0.0f, 0.0f,
+		-0.5f, 0.5f, -0.5f,		0.0f, 0.0f,		1.0f, 0.0f, 0.0f,
+		-0.5f, 0.5f, 0.5f,		0.0f, 0.0f,		1.0f, 0.0f, 0.0f,
 
 	};
 
@@ -444,18 +446,217 @@ int main()
 	AgaveTexture = Texture("Textures/Agave.tga");
 	AgaveTexture.LoadTextureA();
 
+	//Texturas casillas
+	ATabejaD = Texture("Textures/ATabejaD.png");
+	ATabejaD.LoadTextureA();
+	ATabejaN = Texture("Textures/ATabejaN.png");
+	ATabejaN.LoadTextureA();
+	ATabejaI = Texture("Textures/ATabejaI.png");
+	ATabejaI.LoadTextureA();
+
+	ATbmoD = Texture("Textures/ATbmoD.png");
+	ATbmoD.LoadTextureA();
+	ATbmoN = Texture("Textures/ATbmoN.png");
+	ATbmoN.LoadTextureA();
+	ATbmoI = Texture("Textures/ATbmoI.png");
+	ATbmoI.LoadTextureA();
+
+	ATbobertD = Texture("Textures/ATbobertD.png");
+	ATbobertD.LoadTextureA();
+	ATbobertN = Texture("Textures/ATbobertN.png");
+	ATbobertN.LoadTextureA();
+	ATbobertI = Texture("Textures/ATbobertI.png");
+	ATbobertI.LoadTextureA();
+
+	ATcaballoD = Texture("Textures/ATcabaD.png");
+	ATcaballoD.LoadTextureA();
+	ATcaballoN = Texture("Textures/ATcabaN.png");
+	ATcaballoN.LoadTextureA();
+	ATcaballoI = Texture("Textures/ATcabaI.png");
+	ATcaballoI.LoadTextureA();
+
+	ATcasaD = Texture("Textures/ATcasarbolD.png");
+	ATcasaD.LoadTextureA();
+	ATcasaN = Texture("Textures/ATcasarbolN.png");
+	ATcasaN.LoadTextureA();
+	ATcasaI = Texture("Textures/ATcasarbolI.png");
+	ATcasaI.LoadTextureA();
+
+	ATflamaD = Texture("Textures/ATflamaD.png");
+	ATflamaD.LoadTextureA();
+	ATflamaN = Texture("Textures/ATflamaN.png");
+	ATflamaN.LoadTextureA();
+	ATflamaI = Texture("Textures/ATflamaI.png");
+	ATflamaI.LoadTextureA();
+
+	ATjakeD = Texture("Textures/ATjakeD.png");
+	ATjakeD.LoadTextureA();
+	ATjakeN = Texture("Textures/ATjakeN.png");
+	ATjakeN.LoadTextureA();
+	ATjakeI = Texture("Textures/ATjakeI.png");
+	ATjakeI.LoadTextureA();
+
+	ATmarceD = Texture("Textures/ATmarceD.png");
+	ATmarceD.LoadTextureA();
+	ATmarceN = Texture("Textures/ATmarceN.png");
+	ATmarceN.LoadTextureA();
+	ATmarceI = Texture("Textures/ATmarceI.png");
+	ATmarceI.LoadTextureA();
+
+	ATreinoD = Texture("Textures/ATreiniD.png");
+	ATreinoD.LoadTextureA();
+	ATreinoN = Texture("Textures/ATreiniN.png");
+	ATreinoN.LoadTextureA();
+	ATreinoI = Texture("Textures/ATreiniI.png");
+	ATreinoI.LoadTextureA();
+
+	ATunicornD = Texture("Textures/ATunicornD.png");
+	ATunicornD.LoadTextureA();
+	ATunicornN = Texture("Textures/ATunicornN.png");
+	ATunicornN.LoadTextureA();
+	ATunicornI = Texture("Textures/ATunicornI.png");
+	ATunicornI.LoadTextureA();
+
+	FGbarD = Texture("Textures/FGbarD.png");
+	FGbarD.LoadTextureA();
+	FGbarN = Texture("Textures/FGbarN.png");
+	FGbarN.LoadTextureA();
+	FGbarI = Texture("Textures/FGbarI.png"); 
+	FGbarI.LoadTextureA();
+
+	FGhorseD = Texture("Textures/FGcaballod.png");
+	FGhorseD.LoadTextureA();
+	FGhorseN = Texture("Textures/FGcaballoN.png");
+	FGhorseN.LoadTextureA();
+	FGhorseI = Texture("Textures/FGcaballoI.png");
+	FGhorseI.LoadTextureA();
+	
+	FGchangoD = Texture("Textures/FGchangoD.png");
+	FGchangoD.LoadTextureA();
+	FGchangoN = Texture("Textures/FGchangoN.png");
+	FGchangoN.LoadTextureA();
+	FGchangoI = Texture("Textures/FGchangoI.png");
+	FGchangoI.LoadTextureA();
+
+	FGernieD = Texture("Textures/FGernieD.png");
+	FGernieD.LoadTextureA();
+	FGernieN = Texture("Textures/FGernieN.png");
+	FGernieN.LoadTextureA();
+	FGernieI = Texture("Textures/FGernieI.png");
+	FGernieI.LoadTextureA();
+
+	FGperroD = Texture("Textures/FGperroD.png");
+	FGperroD.LoadTextureA();
+	FGperroN = Texture("Textures/FGperroN.png");
+	FGperroN.LoadTextureA();
+	FGperroI = Texture("Textures/FGperroI.png");
+	FGperroI.LoadTextureA();
+
+	FGrupertD = Texture("Textures/FGrupertD.png");
+	FGrupertD.LoadTextureA();
+	FGrupertN = Texture("Textures/FGrupertN.png");
+	FGrupertN.LoadTextureA();
+	FGrupertI = Texture("Textures/FGrupertI.png");
+	FGrupertI.LoadTextureA();
+
+	FGvinieD = Texture("Textures/FGvinieD.png");
+	FGvinieD.LoadTextureA();
+	FGvinieN = Texture("Textures/FGvinieN.png");
+	FGvinieN.LoadTextureA();
+	FGvinieI = Texture("Textures/FGvinieI.png");
+	FGvinieI.LoadTextureA();
+
+	RMcasaD = Texture("Textures/RMcasaD.png");
+	RMcasaD.LoadTextureA();
+	RMcasaN = Texture("Textures/RMcasaN.png");
+	RMcasaN.LoadTextureA();
+	RMcasaI = Texture("Textures/RMcasaI.png");
+	RMcasaI.LoadTextureA();
+
+	RMdinoD = Texture("Textures/RMdinoD.png");
+	RMdinoD.LoadTextureA();
+	RMdinoN = Texture("Textures/RMdinoN.png");
+	RMdinoN.LoadTextureA();
+	RMdinoI = Texture("Textures/RMdinoI.png");
+	RMdinoI.LoadTextureA();
+
+	RMgarageD = Texture("Textures/RMgarageD.png");
+	RMgarageD.LoadTextureA();
+	RMgarageN = Texture("Textures/RMgarageN.png");
+	RMgarageN.LoadTextureA();
+	RMgarageI = Texture("Textures/RMgarageI.png");
+	RMgarageI.LoadTextureA();
+
+	RMgatoD = Texture("Textures/RMgatoD.png");
+	RMgatoD.LoadTextureA();
+	RMgatoN = Texture("Textures/RMgatoN.png");
+	RMgatoN.LoadTextureA();
+	RMgatoI = Texture("Textures/RMgatoI.png");
+	RMgatoI.LoadTextureA();
+
+	RMinsectoD = Texture("Textures/RMinsectoD.png");
+	RMinsectoD.LoadTextureA();
+	RMinsectoN = Texture("Textures/RMinsectoN.png");
+	RMinsectoN.LoadTextureA();
+	RMinsectoI = Texture("Textures/RMinsectoI.png");
+	RMinsectoI.LoadTextureA();
+
+	RMmeeseekD = Texture("Textures/RMmessekD.png");
+	RMmeeseekD.LoadTextureA();
+	RMmeeseekN = Texture("Textures/RMmessekN.png");
+	RMmeeseekN.LoadTextureA();
+	RMmeeseekI = Texture("Textures/RMmessekI.png");
+	RMmeeseekI.LoadTextureA();
+
+	RMpaisaje1D = Texture("Textures/RMpaisaje1D.png");
+	RMpaisaje1D.LoadTextureA();
+	RMpaisaje1N = Texture("Textures/RMpaisaje1N.png");
+	RMpaisaje1N.LoadTextureA();
+	RMpaisaje1I = Texture("Textures/RMpaisaje1I.png");
+	RMpaisaje1I.LoadTextureA();
+
+	RMpaisaje2D = Texture("Textures/RMpaisaje3D.png");
+	RMpaisaje2D.LoadTextureA();
+	RMpaisaje2N = Texture("Textures/RMpaisaje3N.png");
+	RMpaisaje2N.LoadTextureA();
+	RMpaisaje2I = Texture("Textures/RMpaisaje3I.png");
+	RMpaisaje2I.LoadTextureA();
+
+	RMpepinilloD = Texture("Textures/RMpepinilloD.png");
+	RMpepinilloD.LoadTextureA();
+	RMpepinilloN = Texture("Textures/RMpepinilloN.png");
+	RMpepinilloN.LoadTextureA();
+	RMpepinilloI = Texture("Textures/RMpepinilloI.png");
+	RMpepinilloI.LoadTextureA();
+
+	RMpulpoD = Texture("Textures/RMpulpoD.png");
+	RMpulpoD.LoadTextureA();
+	RMpulpoN = Texture("Textures/RMpulpoN.png");
+	RMpulpoN.LoadTextureA();
+	RMpulpoI = Texture("Textures/RMpulpoI.png");
+	RMpulpoI.LoadTextureA();
+
+	RMrickD = Texture("Textures/RMrickD.png");
+	RMrickD.LoadTextureA();
+	RMrickN = Texture("Textures/RMrickN.png");
+	RMrickN.LoadTextureA();
+	RMrickI = Texture("Textures/RMrickI.png");
+	RMrickI.LoadTextureA();
+
+
+
 	//Dado_M = Model();
 	//Dado_M.LoadModel("Models/dadobest.obj");
 	
-	
+	Mapa_M = Model();
+	Mapa_M.LoadModel("Models/mapa.obj");
 
-	Arc_M = Model();
+	/*Arc_M = Model();
 	Arc_M.LoadModel("Models/arc.obj");
 	Arc_M = Model();
 	Arc_M.LoadModel("Models/arc.obj");
 	Letrero_M = Model();
 	Letrero_M.LoadModel("Models/letrero.obj");
-	Mapa_M.LoadModel("Models/mapa.obj");
 	
 	Marceline_M = Model();
 	Marceline_M.LoadModel("Models/marceline.obj");
@@ -566,7 +767,7 @@ int main()
 	toro_M.LoadModel("Models/toro.obj");
 
 	jasper_M = Model();
-	jasper_M.LoadModel("Models/jasper.obj");
+	jasper_M.LoadModel("Models/jasper.obj");*/
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -582,13 +783,13 @@ int main()
 	Material_opaco = Material(0.3f, 4);
 
 
-	//luz direccional, s髄o 1 y siempre debe de existir
+	//luz direccional, s贸lo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 		0.3f, 0.3f,
 		0.0f, 0.0f, -1.0f);
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
-	//Declaraci髇 de primer luz puntual
+	//Declaraci贸n de primer luz puntual
 	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
 		0.0f, 1.0f,
 		-6.0f, 1.5f, 1.5f,
@@ -838,7 +1039,7 @@ int main()
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
 		
-		//informaci髇 en el shader de intensidad especular y brillo
+		//informaci贸n en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
@@ -846,13 +1047,13 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
-		// luz ligada a la c醡ara de tipo flash
-		//sirve para que en tiempo de ejecuci髇 (dentro del while) se cambien propiedades de la luz
+		// luz ligada a la c谩mara de tipo flash
+		//sirve para que en tiempo de ejecuci贸n (dentro del while) se cambien propiedades de la luz
 			glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//informaci髇 al shader de fuentes de iluminaci髇
+		//informaci贸n al shader de fuentes de iluminaci贸n
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
@@ -864,12 +1065,12 @@ int main()
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(115.0f, 0.5f, 130.0f));
-		model = glm::scale(model, glm::vec3(21.0f, 1.0f, 42.0f));
+		model = glm::translate(model, glm::vec3(95.9f, 0.5f, -129.2f));
+		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		pisoTexture.UseTexture();
+		ATabejaD.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[4]->RenderMesh();
@@ -1125,6 +1326,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		gun_M.RenderModel();
 
+
 		////nave
 		//model = glm::mat4(1.0);
 		//model = glm::translate(model, glm::vec3(175.0f, -23.0f, 135.0));
@@ -1132,6 +1334,7 @@ int main()
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//nave_M.RenderModel();
+
 
 		//viny
 		model = glm::mat4(1.0);
