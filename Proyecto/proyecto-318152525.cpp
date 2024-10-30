@@ -884,12 +884,12 @@ int main()
 
 		//Instancia de arboles
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-170.0f, -10.0f, 125.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::translate(model, glm::vec3(96.0f, -13.0f, -165.0));
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		//modelaux = model;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arboles_M.RenderModel();	
+		Arboles_M.RenderModel();
 
 		//marceline
 		model = glm::mat4(1.0);
@@ -914,9 +914,10 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-170.0f, -15.0f, 50.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Castle_M.RenderModel();
+
 
 		//abeja
 		model = glm::mat4(1.0);
@@ -953,7 +954,7 @@ int main()
 		//casa del arbol
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-175.0f, -28.0f, -70.0));
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CasArbol_M.RenderModel();
@@ -1125,13 +1126,13 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		gun_M.RenderModel();
 
-		//nave
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 135.0));
-		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		nave_M.RenderModel();
+		////nave
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(175.0f, -23.0f, 135.0));
+		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//nave_M.RenderModel();
 
 		//viny
 		model = glm::mat4(1.0);
