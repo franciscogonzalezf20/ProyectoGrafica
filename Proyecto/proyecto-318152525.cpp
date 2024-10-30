@@ -203,13 +203,18 @@ Model Mapa_M;
 //Model garage_M;
 //Model gun_M;
 //Model nave_M;
-//Model vinyFG_M;
+Model vinyFG_M;
 Model drunkenclaim_M; 
 Model ErnieFG_M;
 Model HouseFG_M;
 Model monoFG_M;
 Model perroFG_M;
 Model ruppertFG_M;
+Model caballo_M;
+Model toro_M;
+Model jasper_M;
+
+
 
 
 
@@ -534,8 +539,8 @@ int main()
 	//nave_M.LoadModel("Models/nave esp.obj");
 
 
-	//vinyFG_M = Model();
-	//vinyFG_M.LoadModel("Models/vinyFG.obj");
+	vinyFG_M = Model();
+	vinyFG_M.LoadModel("Models/vinyFG.obj");
 
 	drunkenclaim_M = Model();
 	drunkenclaim_M.LoadModel("Models/drunkenclaim.obj");
@@ -554,6 +559,15 @@ int main()
 
 	ruppertFG_M = Model();
 	ruppertFG_M.LoadModel("Models/ruppertFG.obj");
+
+	caballo_M = Model();
+	caballo_M.LoadModel("Models/caballo.obj");
+
+	toro_M = Model();
+	toro_M.LoadModel("Models/toro.obj");
+
+	jasper_M = Model();
+	jasper_M.LoadModel("Models/jasper.obj");
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
@@ -1119,53 +1133,53 @@ int main()
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//nave_M.RenderModel();
 
-		////viny
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(135.0f, -23.0f, 160.0));
-		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//viny
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(135.0f, -23.0f, 160.0));
+		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//vinyFG_M.RenderModel();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		vinyFG_M.RenderModel();
 
-		////drunkenclaim
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(96.0f, -15.0f, 170.0));
-		//model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//drunkenclaim_M.RenderModel();
+		//drunkenclaim
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(96.0f, -15.0f, 170.0));
+		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		drunkenclaim_M.RenderModel();
 
-		////Ernie
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(72.0f, -23.0f, 170.0));
-		//model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//ErnieFG_M.RenderModel();
+		//Ernie
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(72.0f, -23.0f, 170.0));
+		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		ErnieFG_M.RenderModel();
 
-		////Casa gryfin
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(56.0f, -23.0f, 170.0));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//HouseFG_M.RenderModel();
+		//Casa gryfin
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(56.0f, -23.0f, 170.0));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		HouseFG_M.RenderModel();
 
-		////mono malvado
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(25.0f, -25.0f, 170.0));
-		//model = glm::scale(model, glm::vec3(8.0f, 8.0f, 8.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//monoFG_M.RenderModel();
+		//mono malvado
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(25.0f, -25.0f, 170.0));
+		model = glm::scale(model, glm::vec3(8.0f, 8.0f, 8.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		monoFG_M.RenderModel();
 
-		////perro
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(0.0f, -28.0f, 170.0));
-		//model = glm::scale(model, glm::vec3(25.0f, 25.0f, 25.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//perroFG_M.RenderModel();
+		//perro
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -28.0f, 170.0));
+		model = glm::scale(model, glm::vec3(25.0f, 25.0f, 25.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		perroFG_M.RenderModel();
 
 		//ruppert
 		model = glm::mat4(1.0);
@@ -1173,6 +1187,29 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		ruppertFG_M.RenderModel();
+
+		//caballo
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-50.0f, -20.0f, 174.0));
+		model = glm::scale(model, glm::vec3(40.0f, 40.0f, 40.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		caballo_M.RenderModel();
+
+		//toro
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-75.0f, -20.0f, 170.0));
+		model = glm::scale(model, glm::vec3(40.0f, 40.0f, 40.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		toro_M.RenderModel();
+
+		//jasper
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-95.0f, -20.0f, 170.0));
+		model = glm::scale(model, glm::vec3(40.0f, 40.0f, 40.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		jasper_M.RenderModel();
+
+
 
 
 
