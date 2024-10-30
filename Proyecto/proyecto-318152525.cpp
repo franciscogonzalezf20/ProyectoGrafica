@@ -522,7 +522,7 @@ int main()
 	FGbarD.LoadTextureA();
 	FGbarN = Texture("Textures/FGbarN.png");
 	FGbarN.LoadTextureA();
-	FGbarI = Texture("Textures/FGbarI.png");
+	FGbarI = Texture("Textures/FGbarI.png"); 
 	FGbarI.LoadTextureA();
 
 	FGhorseD = Texture("Textures/FGcaballod.png");
