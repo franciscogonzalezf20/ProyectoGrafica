@@ -446,8 +446,205 @@ int main()
 	pisoTexture.LoadTextureA();
 	AgaveTexture = Texture("Textures/Agave.tga");
 	AgaveTexture.LoadTextureA();
+
+	//Texturas casillas
 	ATabejaD = Texture("Textures/ATabejaD.png");
 	ATabejaD.LoadTextureA();
+	ATabejaN = Texture("Textures/ATabejaN.png");
+	ATabejaN.LoadTextureA();
+	ATabejaI = Texture("Textures/ATabejaI.png");
+	ATabejaI.LoadTextureA();
+
+	ATbmoD = Texture("Textures/ATbmoD.png");
+	ATbmoD.LoadTextureA();
+	ATbmoN = Texture("Textures/ATbmoN.png");
+	ATbmoN.LoadTextureA();
+	ATbmoI = Texture("Textures/ATbmoI.png");
+	ATbmoI.LoadTextureA();
+
+	ATbobertD = Texture("Textures/ATbobertD.png");
+	ATbobertD.LoadTextureA();
+	ATbobertN = Texture("Textures/ATbobertN.png");
+	ATbobertN.LoadTextureA();
+	ATbobertI = Texture("Textures/ATbobertI.png");
+	ATbobertI.LoadTextureA();
+
+	ATcaballoD = Texture("Textures/ATcabaD.png");
+	ATcaballoD.LoadTextureA();
+	ATcaballoN = Texture("Textures/ATcabaN.png");
+	ATcaballoN.LoadTextureA();
+	ATcaballoI = Texture("Textures/ATcabaI.png");
+	ATcaballoI.LoadTextureA();
+
+	ATcasaD = Texture("Textures/ATcasarbolD.png");
+	ATcasaD.LoadTextureA();
+	ATcasaN = Texture("Textures/ATcasarbolN.png");
+	ATcasaN.LoadTextureA();
+	ATcasaI = Texture("Textures/ATcasarbolI.png");
+	ATcasaI.LoadTextureA();
+
+	ATflamaD = Texture("Textures/ATflamaD.png");
+	ATflamaD.LoadTextureA();
+	ATflamaN = Texture("Textures/ATflamaN.png");
+	ATflamaN.LoadTextureA();
+	ATflamaI = Texture("Textures/ATflamaI.png");
+	ATflamaI.LoadTextureA();
+
+	ATjakeD = Texture("Textures/ATjakeD.png");
+	ATjakeD.LoadTextureA();
+	ATjakeN = Texture("Textures/ATjakeN.png");
+	ATjakeN.LoadTextureA();
+	ATjakeI = Texture("Textures/ATjakeI.png");
+	ATjakeI.LoadTextureA();
+
+	ATmarceD = Texture("Textures/ATmarceD.png");
+	ATmarceD.LoadTextureA();
+	ATmarceN = Texture("Textures/ATmarceN.png");
+	ATmarceN.LoadTextureA();
+	ATmarceI = Texture("Textures/ATmarceI.png");
+	ATmarceI.LoadTextureA();
+
+	ATreinoD = Texture("Textures/ATreiniD.png");
+	ATreinoD.LoadTextureA();
+	ATreinoN = Texture("Textures/ATreiniN.png");
+	ATreinoN.LoadTextureA();
+	ATreinoI = Texture("Textures/ATreiniI.png");
+	ATreinoI.LoadTextureA();
+
+	ATunicornD = Texture("Textures/ATunicornD.png");
+	ATunicornD.LoadTextureA();
+	ATunicornN = Texture("Textures/ATunicornN.png");
+	ATunicornN.LoadTextureA();
+	ATunicornI = Texture("Textures/ATunicornI.png");
+	ATunicornI.LoadTextureA();
+
+	FGbarD = Texture("Textures/FGbarD.png");
+	FGbarD.LoadTextureA();
+	FGbarN = Texture("Textures/FGbarN.png");
+	FGbarN.LoadTextureA();
+	FGbarI = Texture("Textures/FGbarI.png");
+	FGbarI.LoadTextureA();
+
+	FGhorseD = Texture("Textures/FGcaballod.png");
+	FGhorseD.LoadTextureA();
+	FGhorseN = Texture("Textures/FGcaballoN.png");
+	FGhorseN.LoadTextureA();
+	FGhorseI = Texture("Textures/FGcaballoI.png");
+	FGhorseI.LoadTextureA();
+	
+	FGchangoD = Texture("Textures/FGchangoD.png");
+	FGchangoD.LoadTextureA();
+	FGchangoN = Texture("Textures/FGchangoN.png");
+	FGchangoN.LoadTextureA();
+	FGchangoI = Texture("Textures/FGchangoI.png");
+	FGchangoI.LoadTextureA();
+
+	FGernieD = Texture("Textures/FGernieD.png");
+	FGernieD.LoadTextureA();
+	FGernieN = Texture("Textures/FGernieN.png");
+	FGernieN.LoadTextureA();
+	FGernieI = Texture("Textures/FGernieI.png");
+	FGernieI.LoadTextureA();
+
+	FGperroD = Texture("Textures/FGperroD.png");
+	FGperroD.LoadTextureA();
+	FGperroN = Texture("Textures/FGperroN.png");
+	FGperroN.LoadTextureA();
+	FGperroI = Texture("Textures/FGperroI.png");
+	FGperroI.LoadTextureA();
+
+	FGrupertD = Texture("Textures/FGrupertD.png");
+	FGrupertD.LoadTextureA();
+	FGrupertN = Texture("Textures/FGrupertN.png");
+	FGrupertN.LoadTextureA();
+	FGrupertI = Texture("Textures/FGrupertI.png");
+	FGrupertI.LoadTextureA();
+
+	FGvinieD = Texture("Textures/FGvinieD.png");
+	FGvinieD.LoadTextureA();
+	FGvinieN = Texture("Textures/FGvinieN.png");
+	FGvinieN.LoadTextureA();
+	FGvinieI = Texture("Textures/FGvinieI.png");
+	FGvinieI.LoadTextureA();
+
+	RMcasaD = Texture("Textures/RMcasaD.png");
+	RMcasaD.LoadTextureA();
+	RMcasaN = Texture("Textures/RMcasaN.png");
+	RMcasaN.LoadTextureA();
+	RMcasaI = Texture("Textures/RMcasaI.png");
+	RMcasaI.LoadTextureA();
+
+	RMdinoD = Texture("Textures/RMdinoD.png");
+	RMdinoD.LoadTextureA();
+	RMdinoN = Texture("Textures/RMdinoN.png");
+	RMdinoN.LoadTextureA();
+	RMdinoI = Texture("Textures/RMdinoI.png");
+	RMdinoI.LoadTextureA();
+
+	RMgarageD = Texture("Textures/RMgarageD.png");
+	RMgarageD.LoadTextureA();
+	RMgarageN = Texture("Textures/RMgarageN.png");
+	RMgarageN.LoadTextureA();
+	RMgarageI = Texture("Textures/RMgarageI.png");
+	RMgarageI.LoadTextureA();
+
+	RMgatoD = Texture("Textures/RMgatoD.png");
+	RMgatoD.LoadTextureA();
+	RMgatoN = Texture("Textures/RMgatoN.png");
+	RMgatoN.LoadTextureA();
+	RMgatoI = Texture("Textures/RMgatoI.png");
+	RMgatoI.LoadTextureA();
+
+	RMinsectoD = Texture("Textures/RMinsectoD.png");
+	RMinsectoD.LoadTextureA();
+	RMinsectoN = Texture("Textures/RMinsectoN.png");
+	RMinsectoN.LoadTextureA();
+	RMinsectoI = Texture("Textures/RMinsectoI.png");
+	RMinsectoI.LoadTextureA();
+
+	RMmeeseekD = Texture("Textures/RMmessekD.png");
+	RMmeeseekD.LoadTextureA();
+	RMmeeseekN = Texture("Textures/RMmessekN.png");
+	RMmeeseekN.LoadTextureA();
+	RMmeeseekI = Texture("Textures/RMmessekI.png");
+	RMmeeseekI.LoadTextureA();
+
+	RMpaisaje1D = Texture("Textures/RMpaisaje1D.png");
+	RMpaisaje1D.LoadTextureA();
+	RMpaisaje1N = Texture("Textures/RMpaisaje1N.png");
+	RMpaisaje1N.LoadTextureA();
+	RMpaisaje1I = Texture("Textures/RMpaisaje1I.png");
+	RMpaisaje1I.LoadTextureA();
+
+	RMpaisaje2D = Texture("Textures/RMpaisaje3D.png");
+	RMpaisaje2D.LoadTextureA();
+	RMpaisaje2N = Texture("Textures/RMpaisaje3N.png");
+	RMpaisaje2N.LoadTextureA();
+	RMpaisaje2I = Texture("Textures/RMpaisaje3I.png");
+	RMpaisaje2I.LoadTextureA();
+
+	RMpepinilloD = Texture("Textures/RMpepinilloD.png");
+	RMpepinilloD.LoadTextureA();
+	RMpepinilloN = Texture("Textures/RMpepinilloN.png");
+	RMpepinilloN.LoadTextureA();
+	RMpepinilloI = Texture("Textures/RMpepinilloI.png");
+	RMpepinilloI.LoadTextureA();
+
+	RMpulpoD = Texture("Textures/RMpulpoD.png");
+	RMpulpoD.LoadTextureA();
+	RMpulpoN = Texture("Textures/RMpulpoN.png");
+	RMpulpoN.LoadTextureA();
+	RMpulpoI = Texture("Textures/RMpulpoI.png");
+	RMpulpoI.LoadTextureA();
+
+	RMrickD = Texture("Textures/RMrickD.png");
+	RMrickD.LoadTextureA();
+	RMrickN = Texture("Textures/RMrickN.png");
+	RMrickN.LoadTextureA();
+	RMrickI = Texture("Textures/RMrickI.png");
+	RMrickI.LoadTextureA();
+
+
 
 	//Dado_M = Model();
 	//Dado_M.LoadModel("Models/dadobest.obj");
