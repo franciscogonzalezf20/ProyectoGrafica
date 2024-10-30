@@ -169,49 +169,49 @@ Model Marceline_M;
 Model FlameP_M;
 
 
-//Model Arc_M;
-//Model Letrero_M;
+Model Arc_M;
+Model Letrero_M;
 Model Mapa_M;
-//Model Dado_M;
-//Model Arboles_M;
-//Model Castle_M;
-//Model Bee_M;
-//Model BMO_M;
-//Model Unicorn_M;
-//Model Hunters_M;
-//Model CasArbol_M;
-//Model Bobert_M;
-//Model Jake_M;
-//Model Horse_M;
-//Model Prismo_M;
-//Model rickpepinillo_M;
-//Model rick_M;
-//Model messek_M;
-//Model jessica_M; 
-//Model fleeb_M;
-//Model robo_M;
-//Model arbol1_M;
-//Model arbolesDimension35_M;
-//Model paisaje_M;
-//Model Buttmouth_M; 
-//Model dinosaurio_M;
-//Model gato_M;
-//Model gromflomite_M;
-//Model snowball_M;
-//Model escuela_M;
-//Model garage_M;
-//Model gun_M;
-//Model nave_M;
-//Model vinyFG_M;
-//Model drunkenclaim_M; 
-//Model ErnieFG_M;
-//Model HouseFG_M;
-//Model monoFG_M;
-//Model perroFG_M;
-//Model ruppertFG_M;
-//Model caballo_M;
-//Model toro_M;
-//Model jasper_M;
+Model Dado_M;
+Model Arboles_M;
+Model Castle_M;
+Model Bee_M;
+Model BMO_M;
+Model Unicorn_M;
+Model Hunters_M;
+Model CasArbol_M;
+Model Bobert_M;
+Model Jake_M;
+Model Horse_M;
+Model Prismo_M;
+Model rickpepinillo_M;
+Model rick_M;
+Model messek_M;
+Model jessica_M; 
+Model fleeb_M;
+Model robo_M;
+Model arbol1_M;
+Model arbolesDimension35_M;
+Model paisaje_M;
+Model Buttmouth_M; 
+Model dinosaurio_M;
+Model gato_M;
+Model gromflomite_M;
+Model snowball_M;
+Model escuela_M;
+Model garage_M;
+Model gun_M;
+Model nave_M;
+Model vinyFG_M;
+Model drunkenclaim_M; 
+Model ErnieFG_M;
+Model HouseFG_M;
+Model monoFG_M;
+Model perroFG_M;
+Model ruppertFG_M;
+Model caballo_M;
+Model toro_M;
+Model jasper_M;
 
  
 
@@ -651,7 +651,7 @@ int main()
 	Mapa_M = Model();
 	Mapa_M.LoadModel("Models/mapa.obj");
 
-	/*Arc_M = Model();
+	Arc_M = Model();
 	Arc_M.LoadModel("Models/arc.obj");
 	Arc_M = Model();
 	Arc_M.LoadModel("Models/arc.obj");
@@ -767,7 +767,7 @@ int main()
 	toro_M.LoadModel("Models/toro.obj");
 
 	jasper_M = Model();
-	jasper_M.LoadModel("Models/jasper.obj");*/
+	jasper_M.LoadModel("Models/jasper.obj");
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
