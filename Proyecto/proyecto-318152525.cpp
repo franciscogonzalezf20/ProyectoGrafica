@@ -1078,12 +1078,12 @@ int main()
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//perroFG_M.RenderModel();
 
-		////ruppert
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(-30.0f, -33.0f, 170.0));
-		//model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//ruppertFG_M.RenderModel();
+		//ruppert
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-30.0f, -33.0f, 170.0));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		ruppertFG_M.RenderModel();
 
 
 
