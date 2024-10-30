@@ -75,8 +75,7 @@ Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
-
-  
+//texturas casillas 
 Texture ATabejaD;
 Texture ATabejaN;
 Texture ATabejaI;
