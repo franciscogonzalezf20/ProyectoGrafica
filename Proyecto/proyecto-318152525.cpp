@@ -212,6 +212,10 @@ Model ruppertFG_M;
 Model caballo_M;
 Model toro_M;
 Model jasper_M;
+Model arbolesFG_M;
+Model arbolnavidadFG_M;
+Model rana_M;
+
 
  
 
@@ -769,6 +773,15 @@ int main()
 	jasper_M = Model();
 	jasper_M.LoadModel("Models/jasper.obj");
 
+	arbolesFG_M = Model();
+	arbolesFG_M.LoadModel("Models/arbolesFG.obj");
+
+	arbolnavidadFG_M = Model();
+	arbolnavidadFG_M.LoadModel("Models/arbolnavidadFG.obj");
+
+	rana_M = Model();
+	rana_M.LoadModel("Models/rana.obj");
+
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
@@ -1231,12 +1244,12 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		fleeb_M.RenderModel();
 
-		//robo
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(75.0f, -34.0f, -160.0));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		robo_M.RenderModel();
+		////robo
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(75.0f, -34.0f, -160.0));
+		//model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//robo_M.RenderModel();
 
 		//arbol1
 		model = glm::mat4(1.0);
@@ -1269,13 +1282,13 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Buttmouth_M.RenderModel();
 
-		//dinosaurio
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(175.0f, -30.0f, -50.0));
-		model = glm::scale(model, glm::vec3(25.0f, 25.0f, 25.0f));
-		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		dinosaurio_M.RenderModel();
+		////dinosaurio
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(175.0f, -30.0f, -50.0));
+		//model = glm::scale(model, glm::vec3(25.0f, 25.0f, 25.0f));
+		//model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//dinosaurio_M.RenderModel();
 
 		//gato
 		model = glm::mat4(1.0);
@@ -1304,7 +1317,7 @@ int main()
 
 		//escuela
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(175.0f, -15.0f, 48.0));
+		model = glm::translate(model, glm::vec3(175.0f, -15.0f, -50.0));
 		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -1312,28 +1325,36 @@ int main()
 
 		//garage
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 73.0));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::translate(model, glm::vec3(75.0f, -15.0f, -160.0));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		garage_M.RenderModel();
 
-		//gun
+		//arboles family guy
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 97.0));
-		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		gun_M.RenderModel();
+		arbolesFG_M.RenderModel();
 
 
-		////nave
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(175.0f, -23.0f, 135.0));
-		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//nave_M.RenderModel();
+		//arbol navidad
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 50.0));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		arbolnavidadFG_M.RenderModel();
+
+		//rana
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 70.0));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		rana_M.RenderModel();
 
 
 		//viny
