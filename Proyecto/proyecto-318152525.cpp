@@ -1067,14 +1067,34 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(95.9f, 0.5f, -129.2f));
 		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
+		modelaux = model;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
 		ATabejaD.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
 		meshList[4]->RenderMesh();
 		
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.06f, 0.0f, 0.0f));
+		ATbmoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.06f, 0.0f, 0.0f));
+		ATbmoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+
+
+
+
+
 		//piso
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
@@ -1327,13 +1347,13 @@ int main()
 		gun_M.RenderModel();
 
 
-		////nave
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(175.0f, -23.0f, 135.0));
-		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//nave_M.RenderModel();
+		//nave
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 135.0));
+		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		nave_M.RenderModel();
 
 
 		//viny
