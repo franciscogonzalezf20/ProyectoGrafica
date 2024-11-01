@@ -202,7 +202,7 @@ Model dinosaurio_M;
 Model gato_M;
 Model gromflomite_M;
 Model snowball_M;
-Model escuela_M;
+Model EscuelaMorty_M;
 Model garage_M;
 Model gun_M;
 Model nave_M;
@@ -220,6 +220,7 @@ Model arbolesFG_M;
 Model arbolnavidadFG_M;
 Model rana_M;
 Model dado4_M;
+
 
 
  
@@ -717,7 +718,7 @@ int main()
 	arbol1_M.LoadModel("Models/arbol1.obj");
 
 	arbolesDimension35_M = Model();
-	arbolesDimension35_M.LoadModel("Models/arbolesDimension35.obj");
+	arbolesDimension35_M.LoadModel("Models/arbolesDimension35C.obj");
 
 	paisaje_M = Model();
 	paisaje_M.LoadModel("Models/paisaje.obj");
@@ -737,8 +738,9 @@ int main()
 	snowball_M = Model();
 	snowball_M.LoadModel("Models/snowball.obj");
 
-	escuela_M = Model();
-	escuela_M.LoadModel("Models/escuela.obj");
+
+	EscuelaMorty_M = Model();
+	EscuelaMorty_M.LoadModel("Models/escuela.obj");
 
 	garage_M = Model();
 	garage_M.LoadModel("Models/garage.obj");
@@ -1363,10 +1365,10 @@ int main()
 		//escuela
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(175.0f, -15.0f, -50.0));
-		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		escuela_M.RenderModel();
+		EscuelaMorty_M.RenderModel();
 
 		//garage
 		model = glm::mat4(1.0);
