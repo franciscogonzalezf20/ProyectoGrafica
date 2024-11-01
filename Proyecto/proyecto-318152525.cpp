@@ -55,10 +55,14 @@ float rotletrero;
 float rothelicesOffset;
 float rotletreroOffset;
 float rotAvion;
-float rotDadoX;
-float rotDadoY;
-float rotDadoZ;
-float movDado;
+
+//dados
+float movdado;
+float rotardadoX;
+float rotardadoY;
+float rotardadoZ;
+
+
 bool avanza;
 bool letrr;
 bool let;
@@ -215,6 +219,7 @@ Model jasper_M;
 Model arbolesFG_M;
 Model arbolnavidadFG_M;
 Model rana_M;
+Model dado4_M;
 
 
  
@@ -438,6 +443,8 @@ int main()
 	CreateShaders();
 
 	camera = Camera(glm::vec3(0.0f, 40.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.9f, 0.9f);
+
+	std::srand(static_cast<unsigned int>(std::time(0))); // Inicializar la semilla para números aleatorios
 
 	brickTexture = Texture("Textures/brick.png");
 	brickTexture.LoadTextureA();
@@ -782,6 +789,9 @@ int main()
 	rana_M = Model();
 	rana_M.LoadModel("Models/rana.obj");
 
+	dado4_M = Model();
+	dado4_M.LoadModel("Models/dado4.obj");
+
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
@@ -836,10 +846,10 @@ int main()
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
 	movAvion = 3.0f;
 	movAvionX = 3.0f;
-	movDado = 1.0f;
-	rotDadoX = 1.0f;
-	rotDadoY = 1.0f;
-	rotDadoZ = 1.0f;
+	movdado = 100.0f;
+	rotardadoX = 0.0f;
+	rotardadoY = 0.0f;
+	rotardadoZ = 0.0f;
 	movOffset = 3.0f;
 	movOffset2 = 0.2f;
 	rothelices = 2.0f;
@@ -853,7 +863,7 @@ int main()
 	rot3 = false;
 	let = true;
 	int cont=2.0;
-	static int numeroAleatorio=0;
+	static int dadoResultado = 4;
 	float prevTime = glfwGetTime();
 	glfwSetTime(0);
 	////Loop mientras no se cierra la ventana
@@ -869,6 +879,43 @@ int main()
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
+
+
+		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
+			dadoResultado =  4; // Genera un número entre 1 y 10
+			rotardadoX = 0.0f; // Reiniciar la rotación
+			rotardadoY = 0.0f; // Reiniciar la rotación
+			rotardadoZ = 0.0f; // Reiniciar la rotación
+			movdado = 100.0f;
+		}
+
+		if (movdado > 6.3f) {
+			movdado -= 0.2f * deltaTime;
+
+			// Rotación según el resultado del dado
+			switch (dadoResultado) {
+			case 1:
+				rotardadoX += 6.15f * deltaTime;
+				break;
+			case 2:
+				rotardadoZ += 6.38f * deltaTime;
+				break;
+			case 3:
+				rotardadoX += 1.0f * deltaTime;
+				rotardadoY += 2.0f * deltaTime;
+
+				break;
+			case 4:
+				rotardadoX += 5.6f * deltaTime;
+				rotardadoZ += 2.7f * deltaTime;
+				rotardadoY += 4.8f * deltaTime;
+
+
+				break;
+			
+			}
+
+		}
 		
 		if (glfwGetTime() > 15) {
 			if (avanza) {
@@ -1430,6 +1477,16 @@ int main()
 		model = glm::scale(model, glm::vec3(40.0f, 40.0f, 40.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		jasper_M.RenderModel();
+
+		//dado4
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, movdado, 0.0f));
+		model = glm::rotate(model, rotardadoX * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, rotardadoY * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, rotardadoZ * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		dado4_M.RenderModel();
 
 
 		  
