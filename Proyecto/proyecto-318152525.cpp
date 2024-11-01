@@ -198,27 +198,32 @@ Model messek_M;
 //Model jessica_M; 
 Model fleeb_M;
 Model robo_M;
-//Model arbolesDimension35_M;
-//Model paisaje_M;
-//Model Buttmouth_M; 
-//Model dinosaurio_M;
-//Model gato_M;
-//Model gromflomite_M;
-//Model snowball_M;
-//Model escuela_M;
-//Model garage_M;
-//Model gun_M;
-//Model nave_M;
-//Model vinyFG_M;
-//Model drunkenclaim_M; 
-//Model ErnieFG_M;
-//Model HouseFG_M;
-//Model monoFG_M;
-//Model perroFG_M;
-//Model ruppertFG_M;
-//Model caballo_M;
-//Model toro_M;
-//Model jasper_M;
+
+Model arbol1_M;
+Model arbolesDimension35_M;
+Model paisaje_M;
+Model Buttmouth_M; 
+Model dinosaurio_M;
+Model gato_M;
+Model gromflomite_M;
+Model snowball_M;
+Model escuela_M;
+Model garage_M;
+Model gun_M;
+Model nave_M;
+Model vinyFG_M;
+Model drunkenclaim_M; 
+Model ErnieFG_M;
+Model HouseFG_M;
+Model monoFG_M;
+Model perroFG_M;
+Model ruppertFG_M;
+Model caballo_M;
+Model toro_M;
+Model jasper_M;
+Model arbolesFG_M;
+Model arbolnavidadFG_M;
+Model rana_M;
 
 Skybox skybox;
 
@@ -784,6 +789,15 @@ int main()
 	jasper_M = Model();
 	jasper_M.LoadModel("Models/jasper.obj");*/
 
+	arbolesFG_M = Model();
+	arbolesFG_M.LoadModel("Models/arbolesFG.obj");
+
+	arbolnavidadFG_M = Model();
+	arbolnavidadFG_M.LoadModel("Models/arbolnavidadFG.obj");
+
+	rana_M = Model();
+	rana_M.LoadModel("Models/rana.obj");
+
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
@@ -1073,8 +1087,6 @@ int main()
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
 
-
-
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
 		glm::mat4 modelaux2(1.0);
@@ -1315,6 +1327,7 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
+
 		//c22
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
@@ -1324,6 +1337,13 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
+
+		////robo
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(75.0f, -34.0f, -160.0));
+		//model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//robo_M.RenderModel();
 
 		//c23
 		model = modelaux;
@@ -1375,6 +1395,7 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
+
 		//c28
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
@@ -1384,6 +1405,15 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
+
+		////dinosaurio
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(175.0f, -30.0f, -50.0));
+		//model = glm::scale(model, glm::vec3(25.0f, 25.0f, 25.0f));
+		//model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//dinosaurio_M.RenderModel();
+
 
 		//c29
 		model = modelaux;
@@ -1436,6 +1466,7 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
+
 
 		//c34
 		model = modelaux;
@@ -1502,6 +1533,13 @@ int main()
 		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
 		ATmarceD.UseTexture();
+
+		//escuela
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(175.0f, -15.0f, -50.0));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1618,9 +1656,15 @@ int main()
 
 		//rickpepinillo
 		model = glm::mat4(1.0);
+
 		model = glm::translate(model, glm::vec3(-50.0f, -20.0f, -160.0));
 		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
 		model = glm::rotate(model, -2 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+
+		model = glm::translate(model, glm::vec3(75.0f, -15.0f, -160.0));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		rickpepinillo_M.RenderModel();
 
@@ -1743,15 +1787,30 @@ int main()
 		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//gun_M.RenderModel();
+		//arboles family guy
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 97.0));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		arbolesFG_M.RenderModel();
 
 
-		////nave
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(175.0f, -23.0f, 135.0));
-		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		//model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//nave_M.RenderModel();
+		//arbol navidad
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 50.0));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		arbolnavidadFG_M.RenderModel();
+
+		//rana
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(175.0f, -23.0f, 70.0));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		rana_M.RenderModel();
 
 
 		////viny
