@@ -262,6 +262,8 @@ Model arbolesFG_M;
 Model arbolnavidadFG_M;
 Model rana_M;
 Model dado4_M;
+Model dado4ap_M;
+
 
 Skybox skybox;
 
@@ -912,6 +914,9 @@ int main()
 	dado4_M = Model();
 	dado4_M.LoadModel("Models/dado4.obj");
 
+	dado4ap_M = Model();
+	dado4ap_M.LoadModel("Models/dado4ap.obj");
+
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
 	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
@@ -997,7 +1002,7 @@ int main()
 	rot3 = false;
 	let = true;
 	int cont=2.0;
-	static int dadoResultado = 4;
+	static int dadoResultado = 1;
 	float prevTime = glfwGetTime();
 	glfwSetTime(0);
 	////Loop mientras no se cierra la ventana
@@ -1027,7 +1032,7 @@ int main()
 		}
 
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
-			dadoResultado =  4; // Genera un número entre 1 y 10
+			dadoResultado = rand() % 4 ; // Genera un número entre 1 y 10
 			rotardadoX = 0.0f; // Reiniciar la rotación
 			rotardadoY = 0.0f; // Reiniciar la rotación
 			rotardadoZ = 0.0f; // Reiniciar la rotación
@@ -1039,21 +1044,19 @@ int main()
 
 			// Rotación según el resultado del dado
 			switch (dadoResultado) {
-			case 1:
+			case 0:
 				rotardadoX += 6.15f * deltaTime;
 				break;
-			case 2:
+			case 1:
 				rotardadoZ += 6.38f * deltaTime;
 				break;
-			case 3:
+			case 2:
 				rotardadoX += 1.0f * deltaTime;
 				rotardadoY += 2.0f * deltaTime;
 
 				break;
-			case 4:
-				rotardadoX += 5.6f * deltaTime;
-				rotardadoZ += 2.7f * deltaTime;
-				rotardadoY += 4.8f * deltaTime;
+			case 3:
+				rotardadoX += 6.14f * deltaTime;
 
 
 				break;
@@ -2385,6 +2388,7 @@ int main()
 		jasper_M.RenderModel();
 
 		//dado4
+		if (dadoResultado != 3){
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, movdado, 0.0f));
 		model = glm::rotate(model, rotardadoX * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
@@ -2393,7 +2397,17 @@ int main()
 
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		dado4_M.RenderModel();
+		}
+		else {
+			model = glm::mat4(1.0);
+			model = glm::translate(model, glm::vec3(0.0f, movdado, 0.0f));
+			model = glm::rotate(model, rotardadoX * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+			model = glm::rotate(model, rotardadoY * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+			model = glm::rotate(model, rotardadoZ * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 
+			glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+			dado4ap_M.RenderModel();
+		}
 
 		  
 
