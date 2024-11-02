@@ -466,6 +466,30 @@ void CreateObjects()
 
 }
 
+std::vector<std::string> skyboxFacesDia = {
+	"Textures/SkyboxDia/cara_rt.tga",
+	"Textures/SkyboxDia/cara_lf.tga",
+	"Textures/SkyboxDia/cara_dn.tga",
+	"Textures/SkyboxDia/cara_up.tga",
+	"Textures/SkyboxDia/cara_bk.tga",
+	"Textures/SkyboxDia/cara_ft.tga" };
+std::vector<std::string> skyboxFacesNoche = {
+	"Textures/SkyboxNoche/cara_rt.tga",
+	"Textures/SkyboxNoche/cara_lf.tga",
+	"Textures/SkyboxNoche/cara_dn.tga",
+	"Textures/SkyboxNoche/cara_up.tga",
+	"Textures/SkyboxNoche/cara_bk.tga",
+	"Textures/SkyboxNoche/cara_ft.tga" };
+
+// Función para cambiar las texturas del skybox según las variables dia y noche 
+void actualizarSkybox(bool dia, bool noche) {
+	if (dia) {
+		skybox = Skybox(skyboxFacesDia);
+	}
+	else if (noche) {
+		skybox = Skybox(skyboxFacesNoche);
+	}
+}
 
 void CreateShaders()
 {
@@ -950,16 +974,7 @@ int main()
 	Stewie_M.LoadModel("Models/stewie.obj");
 
 
-	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
-
-	skybox = Skybox(skyboxFaces);
-
+	
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
 
@@ -1054,7 +1069,8 @@ int main()
 	while (!mainWindow.getShouldClose())
 	{
 		
-		GLfloat now = glfwGetTime();
+
+		GLfloat now = glfwGetTime();a
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
@@ -1071,7 +1087,7 @@ int main()
 			noche = true;
 			iluminada = false;
 		}
-
+		actualizarSkybox(dia, noche);
 		//movimiento de personajes
 		if (stewie) {
 
