@@ -69,7 +69,12 @@ bool let;
 bool rot2;
 bool rot3;
 
+//dia/noche/iluminada
 bool dia, noche, iluminada;
+
+//persoanje activo
+bool fin, stewie, morty; 
+
 Window mainWindow;
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
@@ -265,7 +270,8 @@ Model dado4_M;
 Model dado4ap_M;
 Model Stewie_M;
 
-
+Model morty_M;
+Model fin_M;
 
 Skybox skybox;
 
@@ -913,6 +919,14 @@ int main()
 	rana_M = Model();
 	rana_M.LoadModel("Models/rana.obj");
 
+	//personajes en movimiento
+	morty_M = Model();
+	morty_M.LoadModel("Models/morty.obj");
+
+	fin_M = Model();
+	fin_M.LoadModel("Models/fin.obj");
+
+
 	dado4_M = Model();
 	dado4_M.LoadModel("Models/dado4.obj");
 
@@ -921,6 +935,7 @@ int main()
 
 	Stewie_M = Model();
 	Stewie_M.LoadModel("Models/stewie.obj");
+
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
@@ -1006,8 +1021,10 @@ int main()
 	rot2 = false;
 	rot3 = false;
 	let = true;
+
 	int cont=2.0;
 	static int dadoResultado = 1;
+	static int dadoResultado2 = 1;
 	float prevTime = glfwGetTime();
 	glfwSetTime(0);
 	////Loop mientras no se cierra la ventana
@@ -1024,6 +1041,7 @@ int main()
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
 		dia = true;
+		stewie = true;
 
 		if (mainWindow.getsKeys()[GLFW_KEY_I]){
 			dia = true;
@@ -1036,12 +1054,26 @@ int main()
 			iluminada = false;
 		}
 
+		//movimiento de personajes
+		if (stewie) {
+
+		}
+
+		if (morty) {
+
+		}
+		if (fin) {
+
+		}
+		printf("%d", dadoResultado);
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
-			dadoResultado = rand() % 4 ; // Genera un número entre 1 y 10
+			dadoResultado = rand() % 4 ; // Genera un número entre 1 y 4
+			dadoResultado2 = rand() % 8; // Genera un número entre 1 y 8
 			rotardadoX = 0.0f; // Reiniciar la rotación
 			rotardadoY = 0.0f; // Reiniciar la rotación
 			rotardadoZ = 0.0f; // Reiniciar la rotación
 			movdado = 100.0f;
+			
 		}
 
 		if (movdado > 6.3f) {
@@ -1062,8 +1094,6 @@ int main()
 				break;
 			case 3:
 				rotardadoX += 6.14f * deltaTime;
-
-
 				break;
 			
 			}
@@ -2054,6 +2084,13 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
+		//Finn
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
+		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		fin_M.RenderModel();
 
 
 		//Instancia de arboles
@@ -2424,7 +2461,7 @@ int main()
 		Stewie_M.RenderModel();
 
 
-		  
+		 
 
 
 
