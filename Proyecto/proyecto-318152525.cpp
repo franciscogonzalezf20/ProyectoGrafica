@@ -75,6 +75,7 @@ bool rot2;
 bool rot3;
 
 //dia/noche/iluminada
+bool dia, noche, iluminada;
 
 bool isDay = true; // Estado inicial es día
 bool isNightActive = false; // Controla si la noche está activa
@@ -1119,8 +1120,6 @@ int main()
 			rotardado8Z = 0.0f; // Reiniciar la rotación
 			movdado8 = 100.0f;
 
-			printf("Número aleatorio generado dentro del H: %d, %d\n", dadoResultado, dadoResultado2);
-
 		}
 		if (movdado > 6.3f) {
 			movdado -= 0.2f * deltaTime;
@@ -1152,7 +1151,6 @@ int main()
 			case 0:
 				rotardado8X += 4.75f * deltaTime;
 				rotardado8Y += 8.38f * deltaTime;
-				printf("entro a 0 \n");
 
 				break;
 				//cuando sale 2
@@ -1160,7 +1158,6 @@ int main()
 				rotardado8X -= 9.80f * deltaTime;
 				rotardado8Z -= 8.52f * deltaTime;
 				rotardado8Y -= 4.13f * deltaTime;
-				printf("entro a 1 \n");
 
 				break;
 
@@ -1168,21 +1165,18 @@ int main()
 			case 2:
 				rotardado8Y += 10.3f * deltaTime;
 				rotardado8X += 7.0f * deltaTime;
-				printf("entro a 2 \n");
 
 				break;
 				//cuando sale 4
 
 			case 3:
 				rotardado8X += 2.15f * deltaTime; //esta mal
-				printf("entro a 3 \n");
 
 				break;
 				//cuando sale 5
 
 			case 4:
 				//// queda pendiente 
-				printf("entro a 4 \n");
 
 				break;
 				//cuando sale 6
@@ -1190,7 +1184,6 @@ int main()
 			case 5:
 				rotardado8Y += 2.2f * deltaTime;
 				rotardado8X += 2.8f * deltaTime;
-				printf("entro a 5 \n");
 
 				break;
 				//cuando sale 7
@@ -1205,7 +1198,6 @@ int main()
 				rotardado8X += 2.0f * deltaTime;
 				rotardado8Y += 7.3f * deltaTime;
 				rotardado8Z += 7.0f * deltaTime;
-				printf("entro a 7 \n");
 
 				break;
 
