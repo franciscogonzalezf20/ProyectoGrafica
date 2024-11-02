@@ -304,31 +304,31 @@ static const char* vShader = "shaders/shader_light.vert";
 // Fragment Shader
 static const char* fShader = "shaders/shader_light.frag";
 
-// Definición de texturas del skybox 
-std::vector<std::string> skyboxFacesDia = {
-	"Textures/Skybox/cara_rt.tga",
-	"Textures/Skybox/cara_lf.tga",
-	"Textures/Skybox/cara_dn.tga",
-	"Textures/Skybox/cara_up.tga", 
-	"Textures/Skybox/cara_bk.tga", 
-	"Textures/Skybox/cara_ft.tga" }; 
-std::vector<std::string> skyboxFacesNoche = { 
-	"Textures/SkyboxNoche/caraNoche_rt.tga", 
-	"Textures/SkyboxNoche/caraNoche_lf.tga", 
-	"Textures/SkyboxNoche/caraNoche_dn.tga", 
-	"Textures/SkyboxNoche/caraNoche_up.tga", 
-	"Textures/SkyboxNoche/caraNoche_bk.tga", 
-	"Textures/SkyboxNoche/caraNoche_ft.tga" }; 
-
-// Función para actualizar el skybox 
-void actualizarSkybox(bool dia, bool noche) { 
-	if (dia) { 
-		skybox = Skybox(skyboxFacesDia); 
-	} 
-	else if (noche) { 
-		skybox = Skybox(skyboxFacesNoche); 
-	} 
-}
+//// Definición de texturas del skybox 
+//std::vector<std::string> skyboxFacesDia = {
+//	"Textures/Skybox/cara_rt.tga",
+//	"Textures/Skybox/cara_lf.tga",
+//	"Textures/Skybox/cara_dn.tga",
+//	"Textures/Skybox/cara_up.tga", 
+//	"Textures/Skybox/cara_bk.tga", 
+//	"Textures/Skybox/cara_ft.tga" }; 
+//std::vector<std::string> skyboxFacesNoche = { 
+//	"Textures/SkyboxNoche/caraNoche_rt.tga", 
+//	"Textures/SkyboxNoche/caraNoche_lf.tga", 
+//	"Textures/SkyboxNoche/caraNoche_dn.tga", 
+//	"Textures/SkyboxNoche/caraNoche_up.tga", 
+//	"Textures/SkyboxNoche/caraNoche_bk.tga", 
+//	"Textures/SkyboxNoche/caraNoche_ft.tga" }; 
+//
+//// Función para actualizar el skybox 
+//void actualizarSkybox(bool dia, bool noche) { 
+//	if (dia) { 
+//		skybox = Skybox(skyboxFacesDia); 
+//	} 
+//	else if (noche) { 
+//		skybox = Skybox(skyboxFacesNoche); 
+//	} 
+//}
 
 //función de calculo de normales por promedio de vértices 
 void calcAverageNormals(unsigned int* indices, unsigned int indiceCount, GLfloat* vertices, unsigned int verticeCount,
@@ -974,6 +974,15 @@ int main()
 	Stewie_M = Model();
 	Stewie_M.LoadModel("Models/stewie.obj");
 
+	std::vector<std::string> skyboxFaces;
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_dn.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_up.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_bk.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_ft.tga");
+
+	skybox = Skybox(skyboxFaces);
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
 
@@ -1089,7 +1098,7 @@ int main()
 			iluminada = false;
 		}
 
-		actualizarSkybox(dia, noche);
+		//actualizarSkybox(dia, noche);
 
 		//movimiento de personajes
 		if (stewie) {
