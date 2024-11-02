@@ -219,6 +219,7 @@ Texture RMfleebI;
 Texture RMsnowballD;
 Texture RMsnowballN;
 Texture RMsnowballI;
+Texture start;
 
 
 Model Marceline_M;
@@ -790,6 +791,9 @@ int main()
 	RMfleebI = Texture("Textures/RMfleebI.png");
 	RMfleebI.LoadTextureA();
 
+	start = Texture("Textures/start.png");
+	start.LoadTextureA();
+
 
 	//Dado_M = Model();
 	//Dado_M.LoadModel("Models/dadobest.obj");
@@ -1071,13 +1075,30 @@ int main()
 		//movimiento de personajes
 		if (stewie) {
 
+			//aqui se debe agregar que cada que el personaje este en una casilla a esta se le asigna i
+			// luminada=true; o cuando se detenga (para cada personaje), auqnue esto no es correcto del todo, ya que el codigo no sabe en que casilla esta
+			/*Cada que termine este personaje de caminar se asigna :
+			stewie=false;
+			morty=true;
+			fin=false;
+			*/
 		}
 
 		if (morty) {
 
+			/*Cada que termine este personaje de caminar se asigna :
+			stewie=false;
+			morty=false;
+			fin=true;
+			*/
 		}
 		if (fin) {
 
+			/*Cada que termine este personaje de caminar se asigna :
+			stewie=true;
+			morty=false;
+			fin=false;
+			*/
 		}
 		printf("%d", dadoResultado);
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
@@ -1088,6 +1109,10 @@ int main()
 			rotardadoZ = 0.0f; // Reiniciar la rotación
 			movdado = 100.0f;
 			
+			rotardado8X = 0.0f; // Reiniciar la rotación
+			rotardado8Y = 0.0f; // Reiniciar la rotación
+			rotardado8Z = 0.0f; // Reiniciar la rotación
+			movdado8 = 100.0f;
 		}
 
 		if (movdado > 6.3f) {
@@ -1698,7 +1723,8 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
-		if (dia) {
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		/*if (dia) {
 			ATmarceD.UseTexture();
 		}
 		if (noche) {
@@ -1706,8 +1732,8 @@ int main()
 		}
 		if (iluminada) {
 			ATmarceI.UseTexture();
-		}
-		//ATmarceD.UseTexture();
+		}*/
+		start.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
