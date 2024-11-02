@@ -69,7 +69,12 @@ bool let;
 bool rot2;
 bool rot3;
 
+//dia/noche/iluminada
 bool dia, noche, iluminada;
+
+//persoanje activo
+bool fin, stewie, morty; 
+
 Window mainWindow;
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
@@ -264,6 +269,9 @@ Model rana_M;
 Model dado4_M;
 Model dado4ap_M;
 
+
+Model morty_M;
+Model fin_M;
 
 Skybox skybox;
 
@@ -911,6 +919,14 @@ int main()
 	rana_M = Model();
 	rana_M.LoadModel("Models/rana.obj");
 
+	//personajes en movimiento
+	morty_M = Model();
+	morty_M.LoadModel("Models/morty.obj");
+
+	fin_M = Model();
+	fin_M.LoadModel("Models/fin.obj");
+
+
 	dado4_M = Model();
 	dado4_M.LoadModel("Models/dado4.obj");
 
@@ -1001,6 +1017,7 @@ int main()
 	rot2 = false;
 	rot3 = false;
 	let = true;
+
 	int cont=2.0;
 	static int dadoResultado = 1;
 	float prevTime = glfwGetTime();
@@ -1019,6 +1036,7 @@ int main()
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
 		dia = true;
+		stewie = true;
 
 		if (mainWindow.getsKeys()[GLFW_KEY_I]){
 			dia = true;
@@ -1029,6 +1047,18 @@ int main()
 			dia = false;
 			noche = true;
 			iluminada = false;
+		}
+
+		//movimiento de personajes
+		if (stewie) {
+
+		}
+
+		if (morty) {
+
+		}
+		if (fin) {
+
 		}
 
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
@@ -2048,6 +2078,15 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
+
+		//Finn
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
+		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		fin_M.RenderModel();
+
 
 		//Instancia de arboles
 		model = glm::mat4(1.0);
