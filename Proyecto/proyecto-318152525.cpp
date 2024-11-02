@@ -1068,9 +1068,7 @@ int main()
 
 	while (!mainWindow.getShouldClose())
 	{
-		
-
-		GLfloat now = glfwGetTime();a
+		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
@@ -2196,13 +2194,13 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
-		////Finn
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
-		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//fin_M.RenderModel();
+		//Finn
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
+		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		fin_M.RenderModel();
 
 
 		////Instancia de arboles
