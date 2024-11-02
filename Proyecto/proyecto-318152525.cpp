@@ -75,7 +75,10 @@ bool rot2;
 bool rot3;
 
 //dia/noche/iluminada
-bool dia, noche, iluminada;
+
+bool isDay = true; // Estado inicial es día
+bool isNightActive = false; // Controla si la noche está activa
+
 
 //persoanje activo
 bool fin, stewie, morty; 
@@ -320,11 +323,11 @@ std::vector<std::string> skyboxFacesNoche = {
 	"Textures/SkyboxNoche/caraNoche_ft.tga" };
 
 // Función para actualizar el skybox 
-void actualizarSkybox(bool dia, bool noche) {
-	if (dia) {
-		skybox = Skybox(skyboxFacesDia);
+void actualizarSkybox() {
+	if (isDay) {
+
 	}
-	else if (noche) {
+	else if (isNightActive) {
 		skybox = Skybox(skyboxFacesNoche);
 	}
 }
@@ -1061,6 +1064,8 @@ int main()
 	rot3 = false;
 	let = true;
 
+
+
 	movdado8 = 100.0f;
 	rotardado8X = 0.0f;
 	rotardado8Y = 0.0f;
@@ -1083,24 +1088,22 @@ int main()
 
 	while (!mainWindow.getShouldClose())
 	{
-
+		actualizarSkybox();
 		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
-		dia = true;
 		stewie = true;
 
-		if (mainWindow.getsKeys()[GLFW_KEY_I]) {
-			dia = true;
-			noche = false;
-			iluminada = false;
-		}
-		if (mainWindow.getsKeys()[GLFW_KEY_N]) {
-			dia = false;
-			noche = true;
-			iluminada = false;
-		}
+			if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
+				isDay = false; // Cambiar a noche
+				isNightActive = true; // Activar la noche
+			}
+			if (mainWindow.getsKeys()[GLFW_KEY_O]) { // Si se presiona 'O'
+				isNightActive = false; // Desactivar la noche
+				isDay = true; // Volver al día
+			}
+		
 
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
 			dadoResultado = rand() % 3; // Genera un número entre 1 y 4
