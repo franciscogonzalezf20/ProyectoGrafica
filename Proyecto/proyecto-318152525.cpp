@@ -68,6 +68,8 @@ bool letrr;
 bool let;
 bool rot2;
 bool rot3;
+
+bool dia, noche, iluminada;
 Window mainWindow;
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
@@ -80,12 +82,19 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 //texturas casillas 
+Texture mapaTexture;
+Texture ATarbolesD;
+Texture ATarbolesN;
+Texture ATarbolesI;
 Texture ATabejaD;
 Texture ATabejaN;
 Texture ATabejaI;
 Texture ATbmoD;
 Texture ATbmoN;
 Texture ATbmoI;
+Texture ATprismoD;
+Texture ATprismoN;
+Texture ATprismoI;
 Texture ATbobertD;
 Texture ATbobertN;
 Texture ATbobertI;
@@ -110,6 +119,9 @@ Texture ATreinoI;
 Texture ATunicornD;
 Texture ATunicornN;
 Texture ATunicornI;
+Texture AThunterD;
+Texture AThunterN;
+Texture AThunterI;
 Texture FGbarD;
 Texture FGbarN;
 Texture FGbarI;
@@ -131,6 +143,30 @@ Texture FGrupertI;
 Texture FGvinieD;
 Texture FGvinieN;
 Texture FGvinieI;
+Texture FGjasperD;
+Texture FGjasperN;
+Texture FGjasperI;
+Texture FGtoroD;
+Texture FGtoroN;
+Texture FGtoroI;
+Texture FGbrayanD;
+Texture FGbrayanN;
+Texture FGbrayanI;
+Texture FGcasaD;
+Texture FGcasaN;
+Texture FGcasaI;
+Texture FGarbolD;
+Texture FGarbolN;
+Texture FGarbolI;
+Texture FGranaD;
+Texture FGranaN;
+Texture FGranaI;
+Texture FGnavidadD;
+Texture FGnavidadN;
+Texture FGnavidadI;
+Texture RMescuelaD;
+Texture RMescuelaN;
+Texture RMescuelaI;
 Texture RMcasaD;
 Texture RMcasaN;
 Texture RMcasaI;
@@ -164,6 +200,15 @@ Texture RMpulpoI;
 Texture RMrickD;
 Texture RMrickN;
 Texture RMrickI;
+Texture RMjessicaD;
+Texture RMjessicaN;
+Texture RMjessicaI;
+Texture RMfleebD;
+Texture RMfleebN;
+Texture RMfleebI;
+Texture RMsnowballD;
+Texture RMsnowballN;
+Texture RMsnowballI;
 
 
 Model Marceline_M;
@@ -307,15 +352,15 @@ void CreateObjects()
 	};
 
 	unsigned int floorIndices[] = {
-		0, 2, 1,
-		1, 2, 3
+		0, 1, 2,
+		0, 2, 3
 	};
 
 	GLfloat floorVertices[] = {
-		-10.0f, 0.0f, -10.0f,	0.0f, 0.0f,		0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, -10.0f,	10.0f, 0.0f,	0.0f, -1.0f, 0.0f,
-		-10.0f, 0.0f, 10.0f,	0.0f, 10.0f,	0.0f, -1.0f, 0.0f,
-		10.0f, 0.0f, 10.0f,		10.0f, 10.0f,	0.0f, -1.0f, 0.0f
+		0.5f, 0.5f, -0.5f,		0.0f, 0.0f,		0.0f, -1.0f, 0.0f,
+		0.5f, 0.5f, 0.5f,		0.0f, 1.0f,		0.0f, -1.0f, 0.0f,
+		-0.5f, 0.5f, 0.5f,		1.0f, 1.0f,		0.0f, -1.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f,	1.0f, 0.0f,		0.0f, -1.0f, 0.0f
 	};
 
 	unsigned int vegetacionIndices[] = {
@@ -454,8 +499,16 @@ int main()
 	pisoTexture.LoadTextureA();
 	AgaveTexture = Texture("Textures/Agave.tga");
 	AgaveTexture.LoadTextureA();
-
+	mapaTexture = Texture("Textures/mapafon.png");
+	mapaTexture.LoadTextureA();
 	//Texturas casillas
+	ATarbolesD = Texture("Textures/ATarbolesD.png");
+	ATarbolesD.LoadTextureA();
+	ATarbolesN = Texture("Textures/ATarbolesN.png");
+	ATarbolesN.LoadTextureA();
+	ATarbolesI = Texture("Textures/ATarbolesI.png");
+	ATarbolesI.LoadTextureA();
+
 	ATabejaD = Texture("Textures/ATabejaD.png");
 	ATabejaD.LoadTextureA();
 	ATabejaN = Texture("Textures/ATabejaN.png");
@@ -476,6 +529,20 @@ int main()
 	ATbobertN.LoadTextureA();
 	ATbobertI = Texture("Textures/ATbobertI.png");
 	ATbobertI.LoadTextureA();
+
+	ATprismoD = Texture("Textures/ATprismoD.png");
+	ATprismoD.LoadTextureA();
+	ATprismoN = Texture("Textures/ATprismoN.png");
+	ATprismoN.LoadTextureA();
+	ATprismoI = Texture("Textures/ATprismoI.png");
+	ATprismoI.LoadTextureA();
+
+	AThunterD = Texture("Textures/AThunterD.png");
+	AThunterD.LoadTextureA();
+	AThunterN = Texture("Textures/AThunterN.png");
+	AThunterN.LoadTextureA();
+	AThunterI = Texture("Textures/AThunterI.png");
+	AThunterI.LoadTextureA();
 
 	ATcaballoD = Texture("Textures/ATcabaD.png");
 	ATcaballoD.LoadTextureA();
@@ -575,6 +642,63 @@ int main()
 	FGvinieI = Texture("Textures/FGvinieI.png");
 	FGvinieI.LoadTextureA();
 
+	FGjasperD = Texture("Textures/FGjasperD.png");
+	FGjasperD.LoadTextureA();
+	FGjasperN = Texture("Textures/FGjasperN.png");
+	FGjasperN.LoadTextureA();
+	FGjasperI = Texture("Textures/FGjasperI.png");
+	FGjasperI.LoadTextureA();
+
+	FGtoroD = Texture("Textures/FGtoroD.png");
+	FGtoroD.LoadTextureA();
+	FGtoroN = Texture("Textures/FGtoroN.png");
+	FGtoroN.LoadTextureA();
+	FGtoroI = Texture("Textures/FGtoroI.png");
+	FGtoroI.LoadTextureA();
+
+	FGbrayanD = Texture("Textures/FGbrayanD.png");
+	FGbrayanD.LoadTextureA();
+	FGbrayanN = Texture("Textures/FGbrayanN.png");
+	FGbrayanN.LoadTextureA();
+	FGbrayanI = Texture("Textures/FGbrayanI.png");
+	FGbrayanI.LoadTextureA();
+
+	FGcasaD = Texture("Textures/FGcasaD.png");
+	FGcasaD.LoadTextureA();
+	FGcasaN = Texture("Textures/FGcasaN.png");
+	FGcasaN.LoadTextureA();
+	FGcasaI = Texture("Textures/FGcasaI.png");
+	FGcasaI.LoadTextureA();
+
+	FGarbolD = Texture("Textures/FGarbolD.png");
+	FGarbolD.LoadTextureA();
+	FGarbolN = Texture("Textures/FGarbolN.png");
+	FGarbolN.LoadTextureA();
+	FGarbolI = Texture("Textures/FGarbolI.png");
+	FGarbolI.LoadTextureA();
+
+	FGranaD = Texture("Textures/FGranaD.png");
+	FGranaD.LoadTextureA();
+	FGranaN = Texture("Textures/FGranaN.png");
+	FGranaN.LoadTextureA();
+	FGranaI = Texture("Textures/FGranaI.png");
+	FGranaI.LoadTextureA();
+
+	FGnavidadD = Texture("Textures/FGnavidadD.png");
+	FGnavidadD.LoadTextureA();
+	FGnavidadN = Texture("Textures/FGnavidadN.png");
+	FGnavidadN.LoadTextureA();
+	FGnavidadI = Texture("Textures/FGnavidadI.png");
+	FGnavidadI.LoadTextureA();
+
+	RMescuelaD = Texture("Textures/RMescuelaD.png");
+	RMescuelaD.LoadTextureA();
+	RMescuelaN = Texture("Textures/RMescuelaN.png");
+	RMescuelaN.LoadTextureA();
+	RMescuelaI = Texture("Textures/RMescuelaI.png");
+	RMescuelaI.LoadTextureA();
+
+
 	RMcasaD = Texture("Textures/RMcasaD.png");
 	RMcasaD.LoadTextureA();
 	RMcasaN = Texture("Textures/RMcasaN.png");
@@ -645,6 +769,26 @@ int main()
 	RMrickI = Texture("Textures/RMrickI.png");
 	RMrickI.LoadTextureA();
 
+	RMsnowballD = Texture("Textures/RMsnowballD.png");
+	RMsnowballD.LoadTextureA();
+	RMsnowballN = Texture("Textures/RMsnowballN.png");
+	RMsnowballN.LoadTextureA();
+	RMsnowballI = Texture("Textures/RMsnowballI.png");
+	RMsnowballI.LoadTextureA();
+
+	RMjessicaD = Texture("Textures/RMjessicaD.png");
+	RMjessicaD.LoadTextureA();
+	RMjessicaN = Texture("Textures/RMjessicaN.png");
+	RMjessicaN.LoadTextureA();
+	RMjessicaI = Texture("Textures/RMjessicaI.png");
+	RMjessicaI.LoadTextureA();
+
+	RMfleebD = Texture("Textures/RMfleebD.png");
+	RMfleebD.LoadTextureA();
+	RMfleebN = Texture("Textures/RMfleebN.png");
+	RMfleebN.LoadTextureA();
+	RMfleebI = Texture("Textures/RMfleebI.png");
+	RMfleebI.LoadTextureA();
 
 
 	//Dado_M = Model();
@@ -1128,9 +1272,430 @@ int main()
 		//piso
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(10.0f, 1.0f, 10.0f));
+		model = glm::scale(model, glm::vec3(300.0f, 1.0f, 300.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Mapa_M.RenderModel();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		mapaTexture.UseTexture();
+		meshList[2]->RenderMesh();
+
+		//c1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(94.5f, 1.0f, -129.2f));
+		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
+		modelaux = model;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		if (dia) {
+			//ATarbolesD.UseTexture();
+		}
+		if (noche) {
+			//ATarbolesN.UseTexture();
+		}
+		if (iluminada) {
+			//ATarbolesI.UseTexture();
+		}
+		ATarbolesD.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		RMgarageD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c3
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-2.1f, 0.0f, 0.0f));
+		RMfleebD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c4
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-3.15f, 0.0f, 0.0f));
+		RMjessicaD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c5
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-4.20f, 0.0f, 0.0f));
+		RMmeeseekD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c6
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-5.25f, 0.0f, 0.0f));
+		RMrickD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c7
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-6.3f, 0.0f, 0.0f));
+		RMpepinilloD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c8
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-7.35f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		/*if (dia) {
+			ATbmoD.UseTexture();
+		}
+		if (noche) {
+			ATbmoN.UseTexture();
+		}
+		if (iluminada) {
+			ATbmoI.UseTexture();
+		}*/
+		ATprismoD.UseTexture();
+		meshList[4]->RenderMesh();
+
+		//c9
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-8.40f, 0.0f, 0.0f));
+		modelaux = model;
+		ATcaballoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c10
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
+		ATjakeD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c11
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-129.2f, 1.0f, -94.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
+		modelaux = model;
+		ATbobertD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c12
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		ATcasaD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c13
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05, 0.0f, 0.0f));
+		modelaux = model;
+		AThunterD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c14
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		ATunicornD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c15
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		ATbmoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c16
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		ATabejaD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c17
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		ATreinoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c18
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		ATflamaD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c19
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		ATmarceD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c20
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
+		//ATmarceD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c21
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-94.5f, 1.0f, 129.2f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
+		modelaux = model;
+		FGjasperD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c22
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGtoroD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c23
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05, 0.0f, 0.0f));
+		modelaux = model;
+		FGhorseD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c24
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGrupertD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c25
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGbrayanD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c26
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGchangoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c27
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGcasaD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c28
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGernieD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c29
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGbarD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c30
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
+		FGvinieD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c31
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(129.2f, 1.0f, 94.5f));
+		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
+		modelaux = model;
+		FGarbolD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c32
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		FGranaD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c33
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05, 0.0f, 0.0f));
+		modelaux = model;
+		FGnavidadD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+
+		//c34
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		RMsnowballD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c35
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		RMinsectoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c36
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		RMgatoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c37
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		RMescuelaD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c38
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		RMpulpoD.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c39
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
+		modelaux = model;
+		RMpaisaje1D.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//c40
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
+		RMpaisaje2D.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
 
 		//Instancia de arboles
 		model = glm::mat4(1.0);
