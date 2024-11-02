@@ -1042,7 +1042,7 @@ int main()
 
 	int cont=2.0;
 	static int dadoResultado = 1;
-	static int dadoResultado2 = 0;
+	static int dadoResultado2 = 4;
 	float prevTime = glfwGetTime();
 	glfwSetTime(0);
 	////Loop mientras no se cierra la ventana
@@ -1102,7 +1102,7 @@ int main()
 		}
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
 			dadoResultado = rand() % 4 ; // Genera un número entre 1 y 4
-			dadoResultado2 = 0; // Genera un número entre 1 y 8
+			dadoResultado2 = 4; // Genera un número entre 1 y 8
 			rotardadoX = 0.0f; // Reiniciar la rotación
 			rotardadoY = 0.0f; // Reiniciar la rotación
 			rotardadoZ = 0.0f; // Reiniciar la rotación
@@ -1143,16 +1143,15 @@ int main()
 				switch (dadoResultado2) {
 					//cuando sale 1
 				case 0:
-					rotardado8X += 8.0f * deltaTime;
-					rotardado8Y += 2.0f * deltaTime;
-					rotardado8Z += 1.7f * deltaTime;
-
+					rotardado8X += 4.75f * deltaTime;
+					rotardado8Y += 8.38f * deltaTime;
 
 					break;
 					//cuando sale 2
 				case 1:
-					rotardado8Y += 4.3f * deltaTime;
-					rotardado8X += 7.0f * deltaTime;
+					rotardado8X -= 9.80f * deltaTime;
+					rotardado8Z -= 8.52f * deltaTime;
+					rotardado8Y -= 4.13f * deltaTime;
 					break;
 
 					//cuando sale 3
@@ -1163,13 +1162,12 @@ int main()
 					//cuando sale 4
 
 				case 3:
-
+					rotardado8X += 2.15f * deltaTime;
 					break;
 					//cuando sale 5
 
 				case 4:
-
-
+//// queda pendiente
 					break;
 					//cuando sale 6
 
@@ -1181,7 +1179,8 @@ int main()
 					//cuando sale 7
 
 				case 6:
-	
+//// queda pendiente
+
 					break;
 					//cuando sale 8
 
