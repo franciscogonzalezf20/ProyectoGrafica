@@ -929,12 +929,12 @@ int main()
 	dado4_M.LoadModel("Models/dado4.obj");
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_dn.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_up.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_bk.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_ft.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
 
 	skybox = Skybox(skyboxFaces);
 
