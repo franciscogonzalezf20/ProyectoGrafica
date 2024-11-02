@@ -226,6 +226,7 @@ Model Marceline_M;
 Model FlameP_M;
 
 
+
 Model Arc_M;
 Model Letrero_M;
 Model Mapa_M;
@@ -931,7 +932,7 @@ int main()
 
 	//personajes en movimiento
 	morty_M = Model();
-	morty_M.LoadModel("Models/morty.obj");
+	morty_M.LoadModel("Models/PeMorty.obj");
 
 	fin_M = Model();
 	fin_M.LoadModel("Models/fin.obj");
@@ -2196,6 +2197,13 @@ int main()
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//fin_M.RenderModel();
 
+		//Morty 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-110.0f, 2.0f, 135.0));
+		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		morty_M.RenderModel();
 
 		////Instancia de arboles
 		//model = glm::mat4(1.0);
