@@ -62,6 +62,11 @@ float rotardadoX;
 float rotardadoY;
 float rotardadoZ;
 
+//dado 8 caras
+float movdado8;
+float rotardado8X;
+float rotardado8Y;
+float rotardado8Z;
 
 bool avanza;
 bool letrr;
@@ -269,6 +274,7 @@ Model rana_M;
 Model dado4_M;
 Model dado4ap_M;
 Model Stewie_M;
+Model dado8_M;
 
 Model morty_M;
 Model fin_M;
@@ -930,6 +936,9 @@ int main()
 	dado4_M = Model();
 	dado4_M.LoadModel("Models/dado4.obj");
 
+	dado8_M = Model();
+	dado8_M.LoadModel("Models/octa.obj");
+
 	dado4ap_M = Model();
 	dado4ap_M.LoadModel("Models/dado4ap.obj");
 
@@ -1021,6 +1030,11 @@ int main()
 	rot2 = false;
 	rot3 = false;
 	let = true;
+
+	movdado8 = 100.0f;
+	rotardado8X = 0.0f;
+	rotardado8Y = 0.0f;
+	rotardado8Z = 0.0f;
 
 	int cont=2.0;
 	static int dadoResultado = 1;
@@ -2454,13 +2468,21 @@ int main()
 
 		//Stewie
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-120.0f, 20.0f, 130.0f));
+		model = glm::translate(model, glm::vec3(-125.0f, 6.0f, 130.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Stewie_M.RenderModel();
 
+		//dado 8 caras
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, movdado8, 20.0f));
+		model = glm::rotate(model, rotardado8X * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, rotardado8Y * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, rotardado8Z * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		dado8_M.RenderModel();
 		 
 
 
