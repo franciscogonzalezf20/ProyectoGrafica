@@ -951,12 +951,21 @@ int main()
 
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
+	//dia
+	//skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
+	//skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
+	//skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
+	//skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
+	//skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
+	//skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
+
+	//noche
+	skyboxFaces.push_back("Textures/SkyboxNoche/caraNoche_rt.tga"); 
+	skyboxFaces.push_back("Textures/SkyboxNoche/caraNoche_lf.tga"); 
+	skyboxFaces.push_back("Textures/SkyboxNoche/caraNoche_dn.tga"); 
+	skyboxFaces.push_back("Textures/SkyboxNoche/caraNoche_up.tga"); 
+	skyboxFaces.push_back("Textures/SkyboxNoche/caraNoche_bk.tga"); 
+	skyboxFaces.push_back("Textures/SkyboxNoche/caraNoche_ft.tga"); 
 
 	skybox = Skybox(skyboxFaces);
 
