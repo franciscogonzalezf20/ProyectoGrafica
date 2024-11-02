@@ -2075,7 +2075,7 @@ int main()
 		FlameP_M.RenderModel();
 
 		//castillo
-		model = modelaux;
+		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-170.0f, -15.0f, 50.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
@@ -2121,7 +2121,7 @@ int main()
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//CasArbol_M.RenderModel();
+		CasArbol_M.RenderModel();
 
 		//bobert
 		model = glm::mat4(1.0);
@@ -2310,7 +2310,7 @@ int main()
 
 		//viny
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(135.0f, -23.0f, 160.0));
+		model = glm::translate(model, glm::vec3(135.0f, -28.0f, 160.0));
 		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 
