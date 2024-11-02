@@ -1025,7 +1025,6 @@ int main()
 	spotLightCount++;
 
 	//se crean mas luces puntuales y spotlight 
-	 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
 	GLuint uniformColor = 0;
@@ -1054,13 +1053,17 @@ int main()
 	rotardado8Y = 0.0f;
 	rotardado8Z = 0.0f;
 
-	int cont=2.0;
-	static int dadoResultado = 1;
-	static int dadoResultado2 = 4;
+	static bool numeroImprimido = false;
+	int dadoResultado = rand() % 3; // Declaración fuera del if
+	int dadoResultado2 = rand() % 7;
+
+	int cont = 2.0;
+
+
 	float prevTime = glfwGetTime();
 	glfwSetTime(0);
 	////Loop mientras no se cierra la ventana
-	
+
 
 
 	 
@@ -1117,96 +1120,111 @@ int main()
 			*/
 		}
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
-			dadoResultado = rand() % 4 ; // Genera un número entre 1 y 4
-			dadoResultado2 = 4; // Genera un número entre 1 y 8
+			dadoResultado = rand() % 3; // Genera un número entre 1 y 4
+			dadoResultado2 = rand() % 7; // Genera un número entre 1 y 8
+
 			rotardadoX = 0.0f; // Reiniciar la rotación
 			rotardadoY = 0.0f; // Reiniciar la rotación
 			rotardadoZ = 0.0f; // Reiniciar la rotación
 			movdado = 100.0f;
-			
+
 			rotardado8X = 0.0f; // Reiniciar la rotación
 			rotardado8Y = 0.0f; // Reiniciar la rotación
 			rotardado8Z = 0.0f; // Reiniciar la rotación
 			movdado8 = 100.0f;
-		}
 
+			printf("Número aleatorio generado dentro del H: %d, %d\n", dadoResultado, dadoResultado2);
+
+		}
 		if (movdado > 6.3f) {
 			movdado -= 0.2f * deltaTime;
 
-			//// Rotación según el resultado del dado
-			//switch (dadoResultado) {
-			//case 0:
-			//	rotardadoX += 6.15f * deltaTime;
-			//	break;
-			//case 1:
-			//	rotardadoZ += 6.38f * deltaTime;
-			//	break;
-			//case 2:
-			//	rotardadoX += 1.0f * deltaTime;
-			//	rotardadoY += 2.0f * deltaTime;
+			// Rotación según el resultado del dado
+			switch (dadoResultado) {
+			case 0:
+				rotardadoX += 6.15f * deltaTime;
+				break;
+			case 1:
+				rotardadoZ += 6.38f * deltaTime;
+				break;
+			case 2:
+				rotardadoX += 1.0f * deltaTime;
+				rotardadoY += 2.0f * deltaTime;
+				break;
+			case 3:
+				rotardadoX += 6.14f * deltaTime;
+				break;
+			}
+		}
 
-			//	break;
-			//case 3:
-			//	rotardadoX += 6.14f * deltaTime;
-			//	break;
-			
+		if (movdado8 > 6.3f) {
+			movdado8 -= 0.2f * deltaTime;
+
+			// Rotación según el resultado del dado
+			switch (dadoResultado2) {
+				//cuando sale 1
+			case 0:
+				rotardado8X += 4.75f * deltaTime;
+				rotardado8Y += 8.38f * deltaTime;
+				printf("entro a 0 \n");
+
+				break;
+				//cuando sale 2
+			case 1:
+				rotardado8X -= 9.80f * deltaTime;
+				rotardado8Z -= 8.52f * deltaTime;
+				rotardado8Y -= 4.13f * deltaTime;
+				printf("entro a 1 \n");
+
+				break;
+
+				//cuando sale 3
+			case 2:
+				rotardado8Y += 10.3f * deltaTime;
+				rotardado8X += 7.0f * deltaTime;
+				printf("entro a 2 \n");
+
+				break;
+				//cuando sale 4
+
+			case 3:
+				rotardado8X += 2.15f * deltaTime; //esta mal
+				printf("entro a 3 \n");
+
+				break;
+				//cuando sale 5
+
+			case 4:
+				//// queda pendiente 
+				printf("entro a 4 \n");
+
+				break;
+				//cuando sale 6
+
+			case 5:
+				rotardado8Y += 2.2f * deltaTime;
+				rotardado8X += 2.8f * deltaTime;
+				printf("entro a 5 \n");
+
+				break;
+				//cuando sale 7
+
+			case 6:
+				//// queda pendiente
+
+				break;
+				//cuando sale 8
+
+			case 7:
+				rotardado8X += 2.0f * deltaTime;
+				rotardado8Y += 7.3f * deltaTime;
+				rotardado8Z += 7.0f * deltaTime;
+				printf("entro a 7 \n");
+
+				break;
+
 			}
 
-			if (movdado8 > 6.3f) {
-				movdado8 -= 0.2f * deltaTime;
-
-				// Rotación según el resultado del dado
-				switch (dadoResultado2) {
-					//cuando sale 1
-				case 0:
-					rotardado8X += 4.75f * deltaTime;
-					rotardado8Y += 8.38f * deltaTime;
-
-					break;
-					//cuando sale 2
-				case 1:
-					rotardado8X -= 9.80f * deltaTime;
-					rotardado8Z -= 8.52f * deltaTime;
-					rotardado8Y -= 4.13f * deltaTime;
-					break;
-
-					//cuando sale 3
-				case 2:
-					rotardado8Y += 10.3f * deltaTime;
-					rotardado8X += 7.0f * deltaTime;
-					break;
-					//cuando sale 4
-
-				case 3:
-					rotardado8X += 2.15f * deltaTime;
-					break;
-					//cuando sale 5
-
-				case 4:
-//// queda pendiente
-					break;
-					//cuando sale 6
-
-				case 5:
-					rotardado8Y += 2.2f * deltaTime;
-					rotardado8X += 2.8f * deltaTime;
-
-					break;
-					//cuando sale 7
-
-				case 6:
-//// queda pendiente
-
-					break;
-					//cuando sale 8
-
-				case 7:
-					rotardado8X += 2.0f * deltaTime;
-					rotardado8Y += 7.3f * deltaTime;
-					rotardado8Z += 7.0f * deltaTime;
-					break;
-
-				}
 
 		}
 		
