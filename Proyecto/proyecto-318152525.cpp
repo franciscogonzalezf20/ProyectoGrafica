@@ -495,7 +495,7 @@ int main()
 	dirtTexture.LoadTextureA();
 	plainTexture = Texture("Textures/plain.png");
 	plainTexture.LoadTextureA();
-	pisoTexture = Texture("Textures/mapa.png");
+	pisoTexture = Texture("Textures/dirt.png");
 	pisoTexture.LoadTextureA();
 	AgaveTexture = Texture("Textures/Agave.tga");
 	AgaveTexture.LoadTextureA();
@@ -1257,17 +1257,6 @@ int main()
 		glm::mat4 model(1.0);
 		glm::mat4 modelaux(1.0);
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(95.9f, 0.5f, -129.2f));
-		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		ATabejaD.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[4]->RenderMesh();
 		
 		//piso
 		model = glm::mat4(1.0);
@@ -1276,6 +1265,15 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		mapaTexture.UseTexture();
+		meshList[2]->RenderMesh();
+
+		//piso2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, -0.05f, 0.0f));
+		model = glm::scale(model, glm::vec3(450.0f, 1.0f, 450.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		pisoTexture.UseTexture();
 		meshList[2]->RenderMesh();
 
 		//c1
@@ -1772,7 +1770,7 @@ int main()
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		CasArbol_M.RenderModel();
+		//CasArbol_M.RenderModel();
 
 		//bobert
 		model = glm::mat4(1.0);
