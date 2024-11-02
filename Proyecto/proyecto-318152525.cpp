@@ -268,7 +268,7 @@ Model arbolnavidadFG_M;
 Model rana_M;
 Model dado4_M;
 Model dado4ap_M;
-
+Model dado8_M;
 
 Model morty_M;
 Model fin_M;
@@ -933,6 +933,10 @@ int main()
 	dado4ap_M = Model();
 	dado4ap_M.LoadModel("Models/dado4ap.obj");
 
+
+	dado8_M = Model();
+	dado8_M.LoadModel("Models/octa.obj");
+
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
 	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
@@ -1020,6 +1024,7 @@ int main()
 
 	int cont=2.0;
 	static int dadoResultado = 1;
+	static int dadoResultado2 = 1;
 	float prevTime = glfwGetTime();
 	glfwSetTime(0);
 	////Loop mientras no se cierra la ventana
@@ -1060,13 +1065,15 @@ int main()
 		if (fin) {
 
 		}
-
+		printf("%d", dadoResultado);
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
-			dadoResultado = rand() % 4 ; // Genera un número entre 1 y 10
+			dadoResultado = rand() % 4 ; // Genera un número entre 1 y 4
+			dadoResultado2 = rand() % 8; // Genera un número entre 1 y 8
 			rotardadoX = 0.0f; // Reiniciar la rotación
 			rotardadoY = 0.0f; // Reiniciar la rotación
 			rotardadoZ = 0.0f; // Reiniciar la rotación
 			movdado = 100.0f;
+			
 		}
 
 		if (movdado > 6.3f) {
@@ -1087,8 +1094,6 @@ int main()
 				break;
 			case 3:
 				rotardadoX += 6.14f * deltaTime;
-
-
 				break;
 			
 			}
@@ -2448,7 +2453,8 @@ int main()
 			dado4ap_M.RenderModel();
 		}
 
-		  
+		//dado8
+		 
 
 
 
