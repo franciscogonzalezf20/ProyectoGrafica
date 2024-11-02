@@ -326,6 +326,7 @@ std::vector<std::string> skyboxFacesNoche = {
 // Función para actualizar el skybox 
 void actualizarSkybox() {
 	if (isDay) {
+		skybox = Skybox(skyboxFacesDia); 
 
 	}
 	else if (isNightActive) {
@@ -1100,7 +1101,7 @@ int main()
 				isDay = false; // Cambiar a noche
 				isNightActive = true; // Activar la noche
 			}
-			if (mainWindow.getsKeys()[GLFW_KEY_O]) { // Si se presiona 'O'
+			if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
 				isNightActive = false; // Desactivar la noche
 				isDay = true; // Volver al día
 			}
