@@ -263,22 +263,6 @@ Model arbolnavidadFG_M;
 Model rana_M;
 Model dado4_M;
 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
 Skybox skybox;
 
 //materiales
@@ -1015,7 +999,18 @@ int main()
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
+		dia = true;
 
+		if (mainWindow.getsKeys()[GLFW_KEY_I]){
+			dia = true;
+			noche = false;
+			iluminada = false;
+		}
+		if (mainWindow.getsKeys()[GLFW_KEY_N]) {
+			dia = false;
+			noche = true;
+			iluminada = false;
+		}
 
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
 			dadoResultado =  4; // Genera un número entre 1 y 10
@@ -1284,22 +1279,31 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		if (dia) {
-			//ATarbolesD.UseTexture();
+			ATarbolesD.UseTexture();
 		}
 		if (noche) {
-			//ATarbolesN.UseTexture();
+			ATarbolesN.UseTexture();
 		}
 		if (iluminada) {
-			//ATarbolesI.UseTexture();
+			ATarbolesI.UseTexture();
 		}
-		ATarbolesD.UseTexture();
+		//ATarbolesD.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
 		//c2
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
-		RMgarageD.UseTexture();
+		if (dia) {
+			RMgarageD.UseTexture();
+		}
+		if (noche) {
+			RMgarageN.UseTexture();
+		}
+		if (iluminada) {
+			RMgarageI.UseTexture();
+		}
+		//RMgarageD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1308,7 +1312,16 @@ int main()
 		//c3
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-2.1f, 0.0f, 0.0f));
-		RMfleebD.UseTexture();
+		if (dia) {
+			RMfleebD.UseTexture();
+		}
+		if (noche) {
+			RMfleebN.UseTexture();
+		}
+		if (iluminada) {
+			RMfleebI.UseTexture();
+		}
+		//RMfleebD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1317,7 +1330,16 @@ int main()
 		//c4
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-3.15f, 0.0f, 0.0f));
-		RMjessicaD.UseTexture();
+		if (dia) {
+			RMjessicaD.UseTexture();
+		}
+		if (noche) {
+			RMjessicaN.UseTexture();
+		}
+		if (iluminada) {
+			RMjessicaI.UseTexture();
+		}
+		//RMjessicaD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1326,7 +1348,16 @@ int main()
 		//c5
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-4.20f, 0.0f, 0.0f));
-		RMmeeseekD.UseTexture();
+		if (dia) {
+			RMmeeseekD.UseTexture();
+		}
+		if (noche) {
+			RMmeeseekN.UseTexture();
+		}
+		if (iluminada) {
+			RMmeeseekI.UseTexture();
+		}
+		//RMmeeseekD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1335,7 +1366,16 @@ int main()
 		//c6
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-5.25f, 0.0f, 0.0f));
-		RMrickD.UseTexture();
+		if (dia) {
+			RMrickD.UseTexture();
+		}
+		if (noche) {
+			RMrickN.UseTexture();
+		}
+		if (iluminada) {
+			RMrickI.UseTexture();
+		}
+		//RMrickD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1344,7 +1384,16 @@ int main()
 		//c7
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-6.3f, 0.0f, 0.0f));
-		RMpepinilloD.UseTexture();
+		if (dia) {
+			RMpepinilloD.UseTexture();
+		}
+		if (noche) {
+			RMpepinilloN.UseTexture();
+		}
+		if (iluminada) {
+			RMpepinilloI.UseTexture();
+		}
+		//RMpepinilloD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1356,23 +1405,32 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		/*if (dia) {
-			ATbmoD.UseTexture();
+		if (dia) {
+			ATprismoD.UseTexture();
 		}
 		if (noche) {
-			ATbmoN.UseTexture();
+			ATprismoN.UseTexture();
 		}
 		if (iluminada) {
-			ATbmoI.UseTexture();
-		}*/
-		ATprismoD.UseTexture();
+			ATprismoI.UseTexture();
+		}
+		//ATprismoD.UseTexture();
 		meshList[4]->RenderMesh();
 
 		//c9
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-8.40f, 0.0f, 0.0f));
 		modelaux = model;
-		ATcaballoD.UseTexture();
+		if (dia) {
+			ATcaballoD.UseTexture();
+		}
+		if (noche) {
+			ATcaballoN.UseTexture();
+		}
+		if (iluminada) {
+			ATcaballoI.UseTexture();
+		}
+		//ATcaballoD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1382,7 +1440,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
-		ATjakeD.UseTexture();
+		if (dia) {
+			ATjakeD.UseTexture();
+		}
+		if (noche) {
+			ATjakeN.UseTexture();
+		}
+		if (iluminada) {
+			ATjakeI.UseTexture();
+		}
+		//ATjakeD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1394,7 +1461,16 @@ int main()
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
 		modelaux = model;
-		ATbobertD.UseTexture();
+		if (dia) {
+			ATbobertD.UseTexture();
+		}
+		if (noche) {
+			ATbobertN.UseTexture();
+		}
+		if (iluminada) {
+			ATbobertI.UseTexture();
+		}
+		//ATbobertD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1404,7 +1480,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		ATcasaD.UseTexture();
+		if (dia) {
+			ATcasaD.UseTexture();
+		}
+		if (noche) {
+			ATcasaN.UseTexture();
+		}
+		if (iluminada) {
+			ATcasaI.UseTexture();
+		}
+		//ATcasaD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1414,7 +1499,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05, 0.0f, 0.0f));
 		modelaux = model;
-		AThunterD.UseTexture();
+		if (dia) {
+			AThunterD.UseTexture();
+		}
+		if (noche) {
+			AThunterN.UseTexture();
+		}
+		if (iluminada) {
+			AThunterI.UseTexture();
+		}
+		//AThunterD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1424,7 +1518,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		ATunicornD.UseTexture();
+		if (dia) {
+			ATunicornD.UseTexture();
+		}
+		if (noche) {
+			ATunicornN.UseTexture();
+		}
+		if (iluminada) {
+			ATunicornI.UseTexture();
+		}
+		//ATunicornD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1434,7 +1537,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		ATbmoD.UseTexture();
+		if (dia) {
+			ATbmoD.UseTexture();
+		}
+		if (noche) {
+			ATbmoN.UseTexture();
+		}
+		if (iluminada) {
+			ATbmoI.UseTexture();
+		}
+		//ATbmoD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1444,7 +1556,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		ATabejaD.UseTexture();
+		if (dia) {
+			ATabejaD.UseTexture();
+		}
+		if (noche) {
+			ATabejaN.UseTexture();
+		}
+		if (iluminada) {
+			ATabejaI.UseTexture();
+		}
+		//ATabejaD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1454,7 +1575,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		ATreinoD.UseTexture();
+		if (dia) {
+			ATreinoD.UseTexture();
+		}
+		if (noche) {
+			ATreinoN.UseTexture();
+		}
+		if (iluminada) {
+			ATreinoI.UseTexture();
+		}
+		//ATreinoD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1464,7 +1594,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		ATflamaD.UseTexture();
+		if (dia) {
+			ATflamaD.UseTexture();
+		}
+		if (noche) {
+			ATflamaN.UseTexture();
+		}
+		if (iluminada) {
+			ATflamaI.UseTexture();
+		}
+		//ATflamaD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1474,7 +1613,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		ATmarceD.UseTexture();
+		if (dia) {
+			ATmarceD.UseTexture();
+		}
+		if (noche) {
+			ATmarceN.UseTexture();
+		}
+		if (iluminada) {
+			ATmarceI.UseTexture();
+		}
+		//ATmarceD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1484,6 +1632,15 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
+		if (dia) {
+			ATmarceD.UseTexture();
+		}
+		if (noche) {
+			ATmarceN.UseTexture();
+		}
+		if (iluminada) {
+			ATmarceI.UseTexture();
+		}
 		//ATmarceD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
@@ -1496,7 +1653,16 @@ int main()
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
 		modelaux = model;
-		FGjasperD.UseTexture();
+		if (dia) {
+			FGjasperD.UseTexture();
+		}
+		if (noche) {
+			FGjasperN.UseTexture();
+		}
+		if (iluminada) {
+			FGjasperI.UseTexture();
+		}
+		//FGjasperD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1506,7 +1672,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGtoroD.UseTexture();
+		if (dia) {
+			FGtoroD.UseTexture();
+		}
+		if (noche) {
+			FGtoroN.UseTexture();
+		}
+		if (iluminada) {
+			FGtoroI.UseTexture();
+		}
+		//FGtoroD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1516,7 +1691,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05, 0.0f, 0.0f));
 		modelaux = model;
-		FGhorseD.UseTexture();
+		if (dia) {
+			FGhorseD.UseTexture();
+		}
+		if (noche) {
+			FGhorseN.UseTexture();
+		}
+		if (iluminada) {
+			FGhorseI.UseTexture();
+		}
+		//FGhorseD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1526,7 +1710,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGrupertD.UseTexture();
+		if (dia) {
+			FGrupertD.UseTexture();
+		}
+		if (noche) {
+			FGrupertN.UseTexture();
+		}
+		if (iluminada) {
+			FGrupertI.UseTexture();
+		}
+		//FGrupertD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1536,7 +1729,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGbrayanD.UseTexture();
+		if (dia) {
+			FGbrayanD.UseTexture();
+		}
+		if (noche) {
+			FGbrayanN.UseTexture();
+		}
+		if (iluminada) {
+			FGbrayanI.UseTexture();
+		}
+		//FGbrayanD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1546,7 +1748,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGchangoD.UseTexture();
+		if (dia) {
+			FGchangoD.UseTexture();
+		}
+		if (noche) {
+			FGchangoN.UseTexture();
+		}
+		if (iluminada) {
+			FGchangoI.UseTexture();
+		}
+		//FGchangoD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1556,7 +1767,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGcasaD.UseTexture();
+		if (dia) {
+			FGcasaD.UseTexture();
+		}
+		if (noche) {
+			FGcasaN.UseTexture();
+		}
+		if (iluminada) {
+			FGcasaI.UseTexture();
+		}
+		//FGcasaD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1566,7 +1786,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGernieD.UseTexture();
+		if (dia) {
+			FGernieD.UseTexture();
+		}
+		if (noche) {
+			FGernieN.UseTexture();
+		}
+		if (iluminada) {
+			FGernieI.UseTexture();
+		}
+		//FGernieD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1576,7 +1805,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGbarD.UseTexture();
+		if (dia) {
+			FGbarD.UseTexture();
+		}
+		if (noche) {
+			FGbarN.UseTexture();
+		}
+		if (iluminada) {
+			FGbarI.UseTexture();
+		}
+		//FGbarD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1586,7 +1824,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
-		FGvinieD.UseTexture();
+		if (dia) {
+			FGvinieD.UseTexture();
+		}
+		if (noche) {
+			FGvinieN.UseTexture();
+		}
+		if (iluminada) {
+			FGvinieI.UseTexture();
+		}
+		//FGvinieD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1598,7 +1845,16 @@ int main()
 		model = glm::rotate(model, 270 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(22.5f, 1.0f, 41.5f));
 		modelaux = model;
-		FGarbolD.UseTexture();
+		if (dia) {
+			FGarbolD.UseTexture();
+		}
+		if (noche) {
+			FGarbolN.UseTexture();
+		}
+		if (iluminada) {
+			FGarbolI.UseTexture();
+		}
+		//FGarbolD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1608,7 +1864,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		FGranaD.UseTexture();
+		if (dia) {
+			FGranaD.UseTexture();
+		}
+		if (noche) {
+			FGranaN.UseTexture();
+		}
+		if (iluminada) {
+			FGranaI.UseTexture();
+		}
+		//FGranaD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1618,7 +1883,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05, 0.0f, 0.0f));
 		modelaux = model;
-		FGnavidadD.UseTexture();
+		if (dia) {
+			RMsnowballD.UseTexture();
+		}
+		if (noche) {
+			RMsnowballN.UseTexture();
+		}
+		if (iluminada) {
+			RMsnowballI.UseTexture();
+		}
+		//FGnavidadD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1629,7 +1903,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		RMsnowballD.UseTexture();
+		if (dia) {
+			RMsnowballD.UseTexture();
+		}
+		if (noche) {
+			RMsnowballN.UseTexture();
+		}
+		if (iluminada) {
+			RMsnowballI.UseTexture();
+		}
+		//RMsnowballD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1639,7 +1922,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		RMinsectoD.UseTexture();
+		if (dia) {
+			RMinsectoD.UseTexture();
+		}
+		if (noche) {
+			RMinsectoN.UseTexture();
+		}
+		if (iluminada) {
+			RMinsectoI.UseTexture();
+		}
+		//RMinsectoD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1649,7 +1941,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		RMgatoD.UseTexture();
+		if (dia) {
+			RMgatoD.UseTexture();
+		}
+		if (noche) {
+			RMgatoN.UseTexture();
+		}
+		if (iluminada) {
+			RMgatoI.UseTexture();
+		}
+		//RMgatoD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1659,7 +1960,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		RMescuelaD.UseTexture();
+		if (dia) {
+			RMescuelaD.UseTexture();
+		}
+		if (noche) {
+			RMescuelaN.UseTexture();
+		}
+		if (iluminada) {
+			RMescuelaI.UseTexture();
+		}
+		//RMescuelaD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1669,7 +1979,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		RMpulpoD.UseTexture();
+		if (dia) {
+			RMpulpoD.UseTexture();
+		}
+		if (noche) {
+			RMpulpoN.UseTexture();
+		}
+		if (iluminada) {
+			RMpulpoI.UseTexture();
+		}
+		//RMpulpoD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1679,7 +1998,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.05f, 0.0f, 0.0f));
 		modelaux = model;
-		RMpaisaje1D.UseTexture();
+		if (dia) {
+			RMpaisaje1D.UseTexture();
+		}
+		if (noche) {
+			RMpaisaje1N.UseTexture();
+		}
+		if (iluminada) {
+			RMpaisaje1I.UseTexture();
+		}
+		//RMpaisaje1D.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -1689,7 +2017,16 @@ int main()
 		model = modelaux;
 		model = glm::translate(model, glm::vec3(-1.535f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.86f, 1.0f, 1.0f));
-		RMpaisaje2D.UseTexture();
+		if (dia) {
+			RMpaisaje2D.UseTexture();
+		}
+		if (noche) {
+			RMpaisaje2N.UseTexture();
+		}
+		if (iluminada) {
+			RMpaisaje2I.UseTexture();
+		}
+		//RMpaisaje2D.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
