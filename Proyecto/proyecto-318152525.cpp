@@ -932,32 +932,28 @@ int main()
 		0.0f, 0.0f, -1.0f);
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
+	
 	//Declaración de primer luz puntual
-	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+	pointLights[0] = PointLight(0.5f, 0.5f, 0.5f,
 		0.0f, 1.0f,
-		-150.0f, 1.5f, 150.0f,
-		0.3f, 0.2f, 0.1f);
+		145.0f, 8.5f, 145.0f,
+		0.05f, 0.005f, 0.001f);
 	pointLightCount++;
 
-	pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+	pointLights[1] = PointLight(0.5f, 0.5f, 0.5f,
 		0.0f, 1.0f,
-		-150.0f, 1.5f, -150.0f,
-		0.3f, 0.2f, 0.1f);
+		-145.0f, 8.5f, -145.0f,
+		0.05f, 0.005f, 0.001f);
 	pointLightCount++;
 
-	pointLights[2] = PointLight(1.0f, 1.0f, 1.0f,
+	pointLights[2] = PointLight(0.5f, 0.5f, 0.5f,
 		0.0f, 1.0f,
-		150.0f, 1.5f, -150.0f,
-		0.3f, 0.2f, 0.1f);
+		145.0f, 8.5f, -145.0f,
+		0.05f, 0.005f, 0.001f);
 	pointLightCount++;
 
-	pointLights[3] = PointLight(1.0f, 1.0f, 1.0f,
-		0.0f, 1.0f,
-		150.0f, 1.5f, 150.0f,
-		0.3f, 0.2f, 0.1f);
-	pointLightCount++;
+	unsigned int spotLightCount = 2;
 
-	unsigned int spotLightCount = 3;
 	//linterna
 	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
 		1.0f, 2.0f,
