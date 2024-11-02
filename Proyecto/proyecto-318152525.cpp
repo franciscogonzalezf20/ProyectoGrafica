@@ -134,9 +134,6 @@ Texture FGvinieI;
 Texture RMcasaD;
 Texture RMcasaN;
 Texture RMcasaI;
-Texture RMdinoD;
-Texture RMdinoN;
-Texture RMdinoI;
 Texture RMgarageD;
 Texture RMgarageN;
 Texture RMgarageI;
@@ -584,13 +581,6 @@ int main()
 	RMcasaN.LoadTextureA();
 	RMcasaI = Texture("Textures/RMcasaI.png");
 	RMcasaI.LoadTextureA();
-
-	RMdinoD = Texture("Textures/RMdinoD.png");
-	RMdinoD.LoadTextureA();
-	RMdinoN = Texture("Textures/RMdinoN.png");
-	RMdinoN.LoadTextureA();
-	RMdinoI = Texture("Textures/RMdinoI.png");
-	RMdinoI.LoadTextureA();
 
 	RMgarageD = Texture("Textures/RMgarajeD.png");
 	RMgarageD.LoadTextureA();
