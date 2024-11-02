@@ -933,13 +933,31 @@ int main()
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
 	//Declaración de primer luz puntual
-	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
 		0.0f, 1.0f,
-		-6.0f, 1.5f, 1.5f,
+		-150.0f, 1.5f, 150.0f,
 		0.3f, 0.2f, 0.1f);
 	pointLightCount++;
 
-	unsigned int spotLightCount = 0;
+	pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+		0.0f, 1.0f,
+		-150.0f, 1.5f, -150.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCount++;
+
+	pointLights[2] = PointLight(1.0f, 1.0f, 1.0f,
+		0.0f, 1.0f,
+		150.0f, 1.5f, -150.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCount++;
+
+	pointLights[3] = PointLight(1.0f, 1.0f, 1.0f,
+		0.0f, 1.0f,
+		150.0f, 1.5f, 150.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCount++;
+
+	unsigned int spotLightCount = 3;
 	//linterna
 	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
 		1.0f, 2.0f,
@@ -1884,13 +1902,13 @@ int main()
 		model = glm::translate(model, glm::vec3(-1.05, 0.0f, 0.0f));
 		modelaux = model;
 		if (dia) {
-			RMsnowballD.UseTexture();
+			FGnavidadD.UseTexture();
 		}
 		if (noche) {
-			RMsnowballN.UseTexture();
+			FGnavidadN.UseTexture();
 		}
 		if (iluminada) {
-			RMsnowballI.UseTexture();
+			FGnavidadI.UseTexture();
 		}
 		//FGnavidadD.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
