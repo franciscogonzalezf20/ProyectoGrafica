@@ -913,13 +913,21 @@ int main()
 	dado4_M.LoadModel("Models/dado4.obj");
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
-	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
+	//dia
+	/*skyboxFaces.push_back("Textures/Skybox/cara_rt.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/cara_up.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");*/ 
 
+	//noche
+	skyboxFaces.push_back("Textures/Skybox/caraNoche_rt.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/caraNoche_lf.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/caraNoche_dn.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/caraNoche_up.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/caraNoche_bk.tga"); 
+	skyboxFaces.push_back("Textures/Skybox/caraNoche_ft.tga"); 
 	skybox = Skybox(skyboxFaces);
 
 	Material_brillante = Material(4.0f, 256);
@@ -1029,6 +1037,27 @@ int main()
 			noche = true;
 			iluminada = false;
 		}
+
+		//if (dia) {
+		//	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
+		//}
+
+
+		////noche
+		//if (noche) {
+		//	skyboxFaces.push_back("Textures/Skybox/caraNoche_rt.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/caraNoche_lf.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/caraNoche_dn.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/caraNoche_up.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/caraNoche_bk.tga");
+		//	skyboxFaces.push_back("Textures/Skybox/caraNoche_ft.tga");
+		//}
+
 
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
 			dadoResultado =  4; // Genera un número entre 1 y 10
