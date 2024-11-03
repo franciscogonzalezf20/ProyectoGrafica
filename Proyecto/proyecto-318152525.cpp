@@ -75,8 +75,11 @@ bool rot2;
 bool rot3;
 
 //dia/noche/iluminada
-bool dia, noche, iluminada;
+bool iluminada;
 
+bool dia = true; // Estado inicial es día
+bool noche = false; // Controla si la noche está activa
+bool lastDayState = dia;
 //persoanje activo
 bool fin, stewie, morty; 
 
