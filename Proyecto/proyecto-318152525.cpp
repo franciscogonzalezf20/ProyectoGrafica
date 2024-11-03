@@ -500,6 +500,7 @@ void CreateObjects()
 }
 
 
+
 void CreateShaders()
 {
 	Shader *shader1 = new Shader();
@@ -992,10 +993,10 @@ int main()
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
 
-
+	
 	//luz direccional, sólo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-		0.3f, 0.3f,
+		0.6f, 0.6f,
 		0.0f, 0.0f, -1.0f);
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
@@ -1061,6 +1062,8 @@ int main()
 	rot2 = false;
 	rot3 = false;
 	let = true;
+	
+	
 
 	movOffset = 1.0f;
 	movPerX = 1.0f;
@@ -1079,13 +1082,17 @@ int main()
 
 	int cont = 2.0;
 
+	int casillasPorMover = (dadoResultado+1)+(dadoResultado2+1); // Aquí estableces el número de casillas según el dado 
+	int casillasMovidas = 0; 
+	float casillaSeparacion = 25.0f;
 
 	float prevTime = glfwGetTime();
 	glfwSetTime(0);
 	////Loop mientras no se cierra la ventana
 
 
-
+	float cicloDuracion = 500.0f; // Duración del ciclo en segundos 
+	float tiempoAcumulado = 0.0f;
 	  
 
 	while (!mainWindow.getShouldClose())
@@ -1096,21 +1103,41 @@ int main()
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
 		stewie = true;
+		fin = true;
 
 		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
-		if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
-			dia = false; // Cambiar a noche
-			noche = true; // Activar la noche
-			iluminada = false;
+		//if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
+		//	dia = false; // Cambiar a noche
+		//	noche = true; // Activar la noche
+		//	iluminada = false;
+		//}
+		//if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
+		//	noche = false; // Desactivar la noche
+		//	dia = true; // Volver al día
+		//	iluminada = false;
+
+		//}
+		tiempoAcumulado += deltaTime; // Cambiar de día a noche cíclicamente 
+		if (tiempoAcumulado >= cicloDuracion) {
+			tiempoAcumulado = 0.0f;
+			dia = !dia;
+			noche = !noche;
+			printf("Cambio de ciclo: dia = %d, noche = %d\n", dia, noche);
 		}
-		if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
-			noche = false; // Desactivar la noche
-			dia = true; // Volver al día
-			iluminada = false;
+		if (dia) {
+			pointLightCount = 0;
+			spotLightCount = 0;
 
 		}
-		//actualizarSkybox(dia, noche);
+		if(noche){
+			pointLightCount = 3;
+			spotLightCount = 1;
+		}
 
+	
+		printf("%d\n", dadoResultado);
+		printf("%d\n", dadoResultado2);
+		printf("%d\n", casillasPorMover);
 		//movimiento de personajes
 		if (stewie) {
 			if (caminaZ) {
@@ -1137,6 +1164,7 @@ int main()
 				else caminaZ = true;
 			}
 			if (rotPer > 360) rotPer = 0.0f;
+			
 			//aqui se debe agregar que cada que el personaje este en una casilla a esta se le asigna i
 			// luminada=true; o cuando se detenga (para cada personaje), auqnue esto no es correcto del todo, ya que el codigo no sabe en que casilla esta
 			/*Cada que termine este personaje de caminar se asigna :
@@ -1154,14 +1182,89 @@ int main()
 			fin=true;
 			*/
 		}
-		if (fin) {
+		// Aquí vamos a integrar la lógica del movimiento basado en casillas y el dado 
+		if (casillasPorMover > 0) { 
+			if (fin) { 
+				if (caminaZ) { 
+					if (movPerZ > -250) movPerZ -= movOffset * deltaTime; 
+					else if (rotPer < 90 && rotPer >= 0) rotPer += rotOffset * deltaTime; 
+					else caminaX = true; 
+					if (glm::abs(movPerZ) >= casillaSeparacion * casillasMovidas) { 
+						casillasMovidas++; 
+						casillasPorMover--; 
+					} 
+				} 
+				else { 
+					if (movPerZ < 0) movPerZ += movOffset * deltaTime; 
+					else if (rotPer < 270 && rotPer >= 180) rotPer += rotOffset * deltaTime; 
+					else caminaX = false; 
+					
+					if (glm::abs(movPerZ) <= casillaSeparacion * casillasMovidas) { 
+						casillasMovidas++; 
+						casillasPorMover--; 
+					} 
+				} 
+				if (caminaX) { 
+					if (movPerX < 250) movPerX += movOffset * deltaTime; 
+					else if (rotPer < 180 && rotPer >= 90) rotPer += rotOffset * deltaTime; 
+					else caminaZ = false; 
+					
+					if (glm::abs(movPerX) >= casillaSeparacion * casillasMovidas) { 
+						casillasMovidas++; 
+						casillasPorMover--; 
+					} 
+				} 
+				else { 
+					if (movPerX > 0) movPerX -= movOffset * deltaTime; 
+					else if (rotPer < 360 && rotPer >= 270) rotPer += rotOffset * deltaTime; 
+					else caminaZ = true; 
+					if (glm::abs(movPerX) <= casillaSeparacion * casillasMovidas) { 
+						casillasMovidas++; 
+						casillasPorMover--; 
+					} 
+				} 
+				if (rotPer > 360) rotPer = 0.0f; 
 
-			/*Cada que termine este personaje de caminar se asigna :
+				if (casillasPorMover > 0) {
+					casillasMovidas++;
+					casillasPorMover--;
+				}
+			} 
+		}
+		/*if (fin) {
+			if (caminaZ) {
+				if (movPerZ > -250) movPerZ -= movOffset * deltaTime;
+				else if (rotPer < 90 && rotPer >= 0) rotPer += rotOffset * deltaTime;
+				else caminaX = true;
+			}
+
+			else {
+				if (movPerZ < 0) movPerZ += movOffset * deltaTime;
+				else
+					if (rotPer < 270 && rotPer >= 180) rotPer += rotOffset * deltaTime;
+					else caminaX = false;
+			}
+
+			if (caminaX) {
+				if (movPerX < 250) movPerX += movOffset * deltaTime;
+				else if (rotPer < 180 && rotPer >= 90) rotPer += rotOffset * deltaTime;
+				else caminaZ = false;
+			}
+			else {
+				if (movPerX > 0) movPerX -= movOffset * deltaTime;
+				else if (rotPer < 360 && rotPer >= 270) rotPer += rotOffset * deltaTime;
+				else caminaZ = true;
+				stewie = true;
+				fin = false;
+			}
+			if (rotPer > 360) rotPer = 0.0f;
+			
+			Cada que termine este personaje de caminar se asigna :
 			stewie=true;
 			morty=false;
 			fin=false;
-			*/
-		}
+			
+		}*/
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
 			dadoResultado = rand() % 3; // Genera un número entre 1 y 4
 			dadoResultado2 = rand() % 7; // Genera un número entre 1 y 8
@@ -2145,9 +2248,9 @@ int main()
 
 		//Finn
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
+		model = glm::translate(model, glm::vec3(-135.0f + movPerX, 2.0f, 135.0f + movPerZ));
 		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, (180 * toRadians) + (-rotPer * toRadians), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		fin_M.RenderModel();
 
