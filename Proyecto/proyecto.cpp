@@ -1127,11 +1127,15 @@ int main()
 		if (dia) {
 			pointLightCount = 0;
 			spotLightCount = 0;
-
+			mainLight.SetAmbientIntensity(0.6f);
+			mainLight.SetDiffuseIntensity(0.6f);
 		}
 		if(noche){
 			pointLightCount = 3;
 			spotLightCount = 1;
+
+			mainLight.SetAmbientIntensity(0.1f);
+			mainLight.SetDiffuseIntensity(0.1f);
 		}
 
 	
