@@ -983,12 +983,13 @@ int main()
 	Stewie_M.LoadModel("Models/stewie.obj");
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
+	/*skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
 	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
 	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
 	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
 	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
 	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
+*/
 	skybox = Skybox(skyboxFaces);
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
