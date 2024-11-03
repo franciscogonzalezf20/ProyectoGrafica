@@ -56,6 +56,9 @@ float rothelicesOffset;
 float rotletreroOffset;
 float rotAvion;
 
+float movPerX, movPerZ, rotPer, rotOffset;
+bool caminaX, caminaZ;
+
 //dados
 float movdado;
 float rotardadoX;
@@ -1033,7 +1036,6 @@ int main()
 	rotardadoX = 0.0f;
 	rotardadoY = 0.0f;
 	rotardadoZ = 0.0f;
-	movOffset = 3.0f;
 	movOffset2 = 0.2f;
 	rothelices = 2.0f;
 	rothelicesOffset = 9.0f;
@@ -1045,6 +1047,12 @@ int main()
 	rot2 = false;
 	rot3 = false;
 	let = true;
+
+	movOffset = 1.0f;
+	movPerX = 1.0f;
+	movPerZ = 1.0;
+	rotPer = 0.2f;
+	rotOffset = 1.0f;
 
 	movdado8 = 100.0f;
 	rotardado8X = 0.0f;
