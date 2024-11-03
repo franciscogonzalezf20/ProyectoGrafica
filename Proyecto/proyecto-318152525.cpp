@@ -1091,7 +1091,30 @@ int main()
 
 		//movimiento de personajes
 		if (stewie) {
+			if (caminaZ) {
+				if (movPerZ > -250) movPerZ -= movOffset * deltaTime;
+				else if (rotPer < 90 && rotPer >= 0) rotPer += rotOffset * deltaTime;
+				else caminaX = true;
+			}
 
+			else {
+				if (movPerZ < 0) movPerZ += movOffset * deltaTime;
+				else
+					if (rotPer < 270 && rotPer >= 180) rotPer += rotOffset * deltaTime;
+					else caminaX = false;
+			}
+
+			if (caminaX) {
+				if (movPerX < 250) movPerX += movOffset * deltaTime;
+				else if (rotPer < 180 && rotPer >= 90) rotPer += rotOffset * deltaTime;
+				else caminaZ = false;
+			}
+			else {
+				if (movPerX > 0) movPerX -= movOffset * deltaTime;
+				else if (rotPer < 360 && rotPer >= 270) rotPer += rotOffset * deltaTime;
+				else caminaZ = true;
+			}
+			if (rotPer > 360) rotPer = 0.0f;
 			//aqui se debe agregar que cada que el personaje este en una casilla a esta se le asigna i
 			// luminada=true; o cuando se detenga (para cada personaje), auqnue esto no es correcto del todo, ya que el codigo no sabe en que casilla esta
 			/*Cada que termine este personaje de caminar se asigna :
