@@ -1150,7 +1150,6 @@ int main()
 			rotardado8Z = 0.0f; // Reiniciar la rotación
 			movdado8 = 100.0f;
 
-			printf("Número aleatorio generado dentro del H: %d, %d\n", dadoResultado, dadoResultado2);
 
 		}
 		if (movdado > 6.3f) {
@@ -1183,7 +1182,7 @@ int main()
 			case 0:
 				rotardado8X += 4.75f * deltaTime;
 				rotardado8Y += 8.38f * deltaTime;
-				printf("entro a 0 \n");
+			
 
 				break;
 				//cuando sale 2
@@ -1191,7 +1190,7 @@ int main()
 				rotardado8X -= 9.80f * deltaTime;
 				rotardado8Z -= 8.52f * deltaTime;
 				rotardado8Y -= 4.13f * deltaTime;
-				printf("entro a 1 \n");
+			
 
 				break;
 
@@ -1199,21 +1198,21 @@ int main()
 			case 2:
 				rotardado8Y += 10.3f * deltaTime;
 				rotardado8X += 7.0f * deltaTime;
-				printf("entro a 2 \n");
+			
 
 				break;
 				//cuando sale 4
 
 			case 3:
 				rotardado8X += 2.15f * deltaTime; //esta mal
-				printf("entro a 3 \n");
+			
 
 				break;
 				//cuando sale 5
 
 			case 4:
 				//// queda pendiente 
-				printf("entro a 4 \n");
+			
 
 				break;
 				//cuando sale 6
@@ -1221,7 +1220,7 @@ int main()
 			case 5:
 				rotardado8Y += 2.2f * deltaTime;
 				rotardado8X += 2.8f * deltaTime;
-				printf("entro a 5 \n");
+			
 
 				break;
 				//cuando sale 7
@@ -2230,13 +2229,13 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
-		////Finn
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
-		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//fin_M.RenderModel();
+		//Finn
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
+		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		fin_M.RenderModel();
 
 		//Morty 
 		model = glm::mat4(1.0);
