@@ -1065,8 +1065,8 @@ int main()
 	movOffset = 1.0f;
 	movPerX = 1.0f;
 	movPerZ = 1.0;
-	rotPer = 0.1f;
-	rotOffset = 0.1f;
+	rotPer = 0.2f;
+	rotOffset = 1.0f;
 
 	movdado8 = 100.0f;
 	rotardado8X = 0.0f;
@@ -1094,8 +1094,6 @@ int main()
 		lastTime = now;
 		dia = true;
 		stewie = true;
-		caminaX = true;
-		caminaZ = false;
 		if (mainWindow.getsKeys()[GLFW_KEY_I]){
 			dia = true;
 			noche = false;
@@ -1105,31 +1103,34 @@ int main()
 			dia = false;
 			noche = true;
 			iluminada = false;
-		}
+		}/*
+		caminaX = false;
+		caminaZ = true;*/
 
 		//actualizarSkybox(dia, noche);
 
 		//movimiento de personajes
 		if (stewie) {
 			if (caminaZ) {
-				if (caminaZ > -5) movPerZ -= movOffset * deltaTime;
+				if (movPerZ > -250) movPerZ -= movOffset * deltaTime;
 				else if (rotPer < 90 && rotPer >= 0) rotPer += rotOffset * deltaTime;
 				else caminaX = true;
 			}
+			
 			else {
-				if (caminaZ < 0) movPerZ += movOffset * deltaTime;
+				if (movPerZ < 0) movPerZ += movOffset * deltaTime;
 				else 
 					if (rotPer < 270 && rotPer >= 180) rotPer += rotOffset * deltaTime;
 				else caminaX = false;
 			}
 
 			if (caminaX) {
-				if (caminaX < 5) movPerX += movOffset * deltaTime;
+				if (movPerX <250) movPerX += movOffset * deltaTime;
 				else if (rotPer < 180 && rotPer >= 90) rotPer += rotOffset * deltaTime;
 				else caminaZ = false;
 			}
 			else {
-				if (caminaX > 0) movPerZ -= movOffset * deltaTime;
+				if (movPerX > 0) movPerX -= movOffset * deltaTime;
 				else if (rotPer < 360 && rotPer >= 270) rotPer += rotOffset * deltaTime;
 				else caminaZ = true;
 			}
