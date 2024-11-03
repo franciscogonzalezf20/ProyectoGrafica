@@ -983,12 +983,12 @@ int main()
 	Stewie_M.LoadModel("Models/stewie.obj");
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_dn.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_up.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_bk.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_ft.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
 
 	skybox = Skybox(skyboxFaces);
 	Material_brillante = Material(4.0f, 256);
@@ -1094,7 +1094,6 @@ int main()
 		lastTime = now;
 		dia = true;
 		stewie = true;
-
 		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
 		if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
 			dia = false; // Cambiar a noche
