@@ -1044,11 +1044,11 @@ int main()
 
 	//linterna
 	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-		1.0f, 2.0f,
+		0.7f, 0.7f,
 		0.0f, 0.0f, 0.0f,
 		0.0f, -1.0f, 0.0f,
 		0.8f, 0.0f, 0.0f,
-		30.0f);
+		10.0f);
 	spotLightCount++;
 
 	//luz fija
