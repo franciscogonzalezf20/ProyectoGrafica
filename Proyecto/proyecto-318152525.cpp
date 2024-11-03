@@ -79,7 +79,7 @@ bool dia, noche, iluminada;
 
 bool isDay = true; // Estado inicial es día
 bool isNightActive = false; // Controla si la noche está activa
-
+bool lastDayState = isDay;
 
 //persoanje activo
 bool fin, stewie, morty; 
@@ -325,14 +325,17 @@ std::vector<std::string> skyboxFacesNoche = {
 
 // Función para actualizar el skybox 
 void actualizarSkybox() {
-	if (isDay) {
-		skybox = Skybox(skyboxFacesDia); 
-
-	}
-	else if (isNightActive) {
-		skybox = Skybox(skyboxFacesNoche);
+	if (isDay != lastDayState) { // Solo actualizar si el estado ha cambiado
+		if (isDay) {
+			skybox = Skybox(skyboxFacesDia);
+		}
+		else {
+			skybox = Skybox(skyboxFacesNoche);
+		}
+		lastDayState = isDay; // Actualizar el estado anterior
 	}
 }
+
 
 
 //función de calculo de normales por promedio de vértices 
@@ -1096,15 +1099,15 @@ int main()
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
 		stewie = true;
-
-			if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
-				isDay = false; // Cambiar a noche
-				isNightActive = true; // Activar la noche
-			}
-			if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
-				isNightActive = false; // Desactivar la noche
-				isDay = true; // Volver al día
-			}
+		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
+		if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
+			isDay = false; // Cambiar a noche
+			isNightActive = true; // Activar la noche
+		}
+		if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
+			isNightActive = false; // Desactivar la noche
+			isDay = true; // Volver al día
+		}
 		
 
 		if (mainWindow.getsKeys()[GLFW_KEY_H]) {
