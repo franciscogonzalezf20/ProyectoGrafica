@@ -1093,7 +1093,6 @@ int main()
 
 	while (!mainWindow.getShouldClose())
 	{
-		actualizarSkybox();
 		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
