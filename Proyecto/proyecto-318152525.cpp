@@ -224,16 +224,9 @@ Texture RMsnowballN;
 Texture RMsnowballI;
 Texture start;
 
-
+/*
 Model Marceline_M;
 Model FlameP_M;
-
-
-
-Model Arc_M;
-Model Letrero_M;
-Model Mapa_M;
-Model Dado_M;
 Model Arboles_M;
 Model Castle_M;
 Model Bee_M;
@@ -276,6 +269,7 @@ Model jasper_M;
 Model arbolesFG_M;
 Model arbolnavidadFG_M;
 Model rana_M;
+*/
 Model dado4_M;
 Model dado4ap_M;
 Model Stewie_M;
@@ -826,21 +820,8 @@ int main()
 
 	start = Texture("Textures/start.png");
 	start.LoadTextureA();
-
-
-	//Dado_M = Model();
-	//Dado_M.LoadModel("Models/dadobest.obj");
-	
-	Mapa_M = Model();
-	Mapa_M.LoadModel("Models/mapa.obj");
-
-	Arc_M = Model();
-	Arc_M.LoadModel("Models/arc.obj");
-	Arc_M = Model();
-	Arc_M.LoadModel("Models/arc.obj");
-	Letrero_M = Model();
-	Letrero_M.LoadModel("Models/letrero.obj");
-	
+	// modelos
+	/*
 	Marceline_M = Model();
 	Marceline_M.LoadModel("Models/marceline.obj");
 	FlameP_M = Model();
@@ -961,14 +942,14 @@ int main()
 
 	rana_M = Model();
 	rana_M.LoadModel("Models/rana.obj");
-
+	*/
 	//personajes en movimiento
 	morty_M = Model();
 	morty_M.LoadModel("Models/PeMorty.obj");
-
+	
 	fin_M = Model();
 	fin_M.LoadModel("Models/fin.obj");
-
+	
 
 	dado4_M = Model();
 	dado4_M.LoadModel("Models/dado4.obj");
@@ -1296,119 +1277,7 @@ int main()
 				avanza = !avanza;
 			}
 		}
-		/*
-		if (glfwGetTime() > 5) {
-			if (letrr) {
-				if (movLetrero > -90.0f)
-				{
-					rotletrero += 4.0 * deltaTime;
-					movLetrero -= 1.0 * deltaTime;
-				}
-				else {
-					letrr = !letrr;
-				}
-			}
-			else
-			{
-				if (movLetrero < -0.1f)
-				{
-					rotletrero += 4.0 * deltaTime;
-					movLetrero += 1.0 * deltaTime;
-				}
-				else {
-					letrr = !letrr;
-				}
-			}*/
-
-			/*if (glfwGetTime() > 5) {
-				if (letrr) {
-					movLetrero = movOffset2 * deltaTime;
-
-					if (movLetrero < 0.0f && movLetrero > -1.0)
-					{
-						rotletrero += rotletreroOffset * deltaTime;
-						if (glfwGetTime() > 2) {
-							movLetrero = movOffset2 * deltaTime;
-						}
-					}
-					else if (movLetrero < -1.1f && movLetrero > -89.0) {
-						movLetrero=movOffset2*deltaTime;
-					}
-					else if (movLetrero <-89.1 && movLetrero > -90.0){
-						rotletrero += rotletreroOffset * deltaTime;
-						if (glfwGetTime() > 2) {
-							movLetrero = movOffset2 * deltaTime;
-						}
-					}
-					else {
-						letrr = !letrr;
-					}
-				}
-				else{
-						letrr = !letrr;
-				}
-
-			}*/
-
-			/*
-			if (glfwGetTime() > 5) {
-				//traslacion
-				if (letrr) {
-					if (glfwGetTime() == 5 + cont) {
-						movLetrero -= movOffset2 * deltaTime;
-						letrr = !letrr;
-						cont += 2;
-					}
-				}
-
-				else {
-					if (movLetrero < 0.0f) {
-						movLetrero += movOffset2 * deltaTime;
-					}
-					else letrr = !letrr;
-				}
-
-
-			}
-
-			printf("%.3f, %d \n", glfwGetTime(), cont);
-			if (glfwGetTime() > 5) {
-				//movLetrero = movOffset2 * deltaTime;
-				if (letrr) {
-					//movLetrero = movOffset2 * deltaTime;
-					if (movLetrero < 1.0f && movLetrero > -2.0) {
-						movLetrero += movOffset2 * deltaTime;   // Rotar
-						if (glfwGetTime() > 2 * cont) {
-								rotletrero += rotletreroOffset * deltaTime;
-								movLetrero -= movOffset2 * deltaTime;// Continuar movimiento
-								cont++;
-						}
-					}
-					else if (movLetrero <= -2.1f && movLetrero > -89.0) {
-						if (glfwGetTime() > 2*cont) {
-							movLetrero -= movOffset2 * deltaTime;// Continuar movimiento
-							cont++;
-						}
-					}
-					else if (movLetrero <= -89.1 && movLetrero > -91.0) {
-						 movLetrero = movOffset2 * deltaTime;  // Rotar
-						if (glfwGetTime() > 2*cont) {
-							rotletrero += rotletreroOffset * deltaTime;
-							movLetrero += movOffset2 * deltaTime;// Continuar movimiento
-							cont++;
-						}
-					}
-					else {
-						letrr = !letrr;  // Invertir la variable
-						  // Reiniciar el tiempo previo
-					}
-				}
-				else {
-					letrr = !letrr;  // Invertir la variable para repetir el proceso
-					 // Reiniciar el tiempo previo
-				}
-			}
-			*/
+		
 	
 
 		//Recibir eventos del usuario
@@ -2238,13 +2107,13 @@ int main()
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		//fin_M.RenderModel();
 
-		//Morty 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-110.0f, 2.0f, 135.0));
-		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		morty_M.RenderModel();
+		////Morty 
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(-110.0f, 2.0f, 135.0));
+		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//morty_M.RenderModel();
 
 		////Instancia de arboles
 		//model = glm::mat4(1.0);
