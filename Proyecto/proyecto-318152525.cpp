@@ -56,6 +56,9 @@ float rothelicesOffset;
 float rotletreroOffset;
 float rotAvion;
 
+float movPerX, movPerZ, rotPer, rotOffset;
+bool caminaX, caminaZ;
+
 //dados
 float movdado;
 float rotardadoX;
@@ -1033,7 +1036,6 @@ int main()
 	rotardadoX = 0.0f;
 	rotardadoY = 0.0f;
 	rotardadoZ = 0.0f;
-	movOffset = 3.0f;
 	movOffset2 = 0.2f;
 	rothelices = 2.0f;
 	rothelicesOffset = 9.0f;
@@ -1045,6 +1047,12 @@ int main()
 	rot2 = false;
 	rot3 = false;
 	let = true;
+
+	movOffset = 1.0f;
+	movPerX = 1.0f;
+	movPerZ = 1.0;
+	rotPer = 0.2f;
+	rotOffset = 1.0f;
 
 	movdado8 = 100.0f;
 	rotardado8X = 0.0f;
@@ -1091,7 +1099,30 @@ int main()
 
 		//movimiento de personajes
 		if (stewie) {
+			if (caminaZ) {
+				if (movPerZ > -250) movPerZ -= movOffset * deltaTime;
+				else if (rotPer < 90 && rotPer >= 0) rotPer += rotOffset * deltaTime;
+				else caminaX = true;
+			}
 
+			else {
+				if (movPerZ < 0) movPerZ += movOffset * deltaTime;
+				else
+					if (rotPer < 270 && rotPer >= 180) rotPer += rotOffset * deltaTime;
+					else caminaX = false;
+			}
+
+			if (caminaX) {
+				if (movPerX < 250) movPerX += movOffset * deltaTime;
+				else if (rotPer < 180 && rotPer >= 90) rotPer += rotOffset * deltaTime;
+				else caminaZ = false;
+			}
+			else {
+				if (movPerX > 0) movPerX -= movOffset * deltaTime;
+				else if (rotPer < 360 && rotPer >= 270) rotPer += rotOffset * deltaTime;
+				else caminaZ = true;
+			}
+			if (rotPer > 360) rotPer = 0.0f;
 			//aqui se debe agregar que cada que el personaje este en una casilla a esta se le asigna i
 			// luminada=true; o cuando se detenga (para cada personaje), auqnue esto no es correcto del todo, ya que el codigo no sabe en que casilla esta
 			/*Cada que termine este personaje de caminar se asigna :
@@ -2475,8 +2506,8 @@ int main()
 
 		//Stewie
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, 6.0f, 130.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-125.0f + movPerX, 6.0f, 130.0f + movPerZ));
+		model = glm::rotate(model, (90 * toRadians) + (-rotPer * toRadians), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Stewie_M.RenderModel();
