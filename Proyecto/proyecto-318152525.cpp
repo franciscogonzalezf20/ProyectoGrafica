@@ -308,7 +308,6 @@ static const char* vShader = "shaders/shader_light.vert";
 static const char* fShader = "shaders/shader_light.frag";
 
 // Definición de texturas del skybox 
-// Definición de texturas del skybox 
 std::vector<std::string> skyboxFacesDia = {
 	"Textures/Skybox/cara_rt.tga",
 	"Textures/Skybox/cara_lf.tga",
