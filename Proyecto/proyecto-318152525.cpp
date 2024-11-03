@@ -1095,17 +1095,18 @@ int main()
 		dia = true;
 		stewie = true;
 
-		if (mainWindow.getsKeys()[GLFW_KEY_I]){
-			dia = true;
-			noche = false;
+		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
+		if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
+			dia = false; // Cambiar a noche
+			noche = true; // Activar la noche
 			iluminada = false;
 		}
-		if (mainWindow.getsKeys()[GLFW_KEY_N]) {
-			dia = false;
-			noche = true;
+		if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
+			noche = false; // Desactivar la noche
+			dia = true; // Volver al día
 			iluminada = false;
-		}
 
+		}
 		//actualizarSkybox(dia, noche);
 
 		//movimiento de personajes
