@@ -75,11 +75,11 @@ bool rot2;
 bool rot3;
 
 //dia/noche/iluminada
-bool dia, noche, iluminada;
+bool iluminada;
 
-bool isDay = true; // Estado inicial es día
-bool isNightActive = false; // Controla si la noche está activa
-bool lastDayState = isDay;
+bool dia = true; // Estado inicial es día
+bool noche = false; // Controla si la noche está activa
+bool lastDayState = dia;
 
 //persoanje activo
 bool fin, stewie, morty; 
@@ -325,14 +325,14 @@ std::vector<std::string> skyboxFacesNoche = {
 
 // Función para actualizar el skybox 
 void actualizarSkybox() {
-	if (isDay != lastDayState) { // Solo actualizar si el estado ha cambiado
-		if (isDay) {
+	if (dia != lastDayState) { // Solo actualizar si el estado ha cambiado
+		if (dia) {
 			skybox = Skybox(skyboxFacesDia);
 		}
 		else {
 			skybox = Skybox(skyboxFacesNoche);
 		}
-		lastDayState = isDay; // Actualizar el estado anterior
+		lastDayState = dia; // Actualizar el estado anterior
 	}
 }
 
@@ -1100,12 +1100,12 @@ int main()
 		stewie = true;
 		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
 		if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
-			isDay = false; // Cambiar a noche
-			isNightActive = true; // Activar la noche
+			dia = false; // Cambiar a noche
+			noche = true; // Activar la noche
 		}
 		if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
-			isNightActive = false; // Desactivar la noche
-			isDay = true; // Volver al día
+			noche = false; // Desactivar la noche
+			dia = true; // Volver al día
 		}
 		
 
