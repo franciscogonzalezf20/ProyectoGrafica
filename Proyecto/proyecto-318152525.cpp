@@ -280,6 +280,9 @@ Model dado4_M;
 Model dado4ap_M;
 Model Stewie_M;
 Model dado8_M;
+Model lampRM_M;
+Model lampHA_M;
+Model lampFG_M;
 
 Model morty_M;
 Model fin_M;
@@ -961,6 +964,15 @@ int main()
 
 	rana_M = Model();
 	rana_M.LoadModel("Models/rana.obj");
+
+	lampRM_M = Model();
+	lampRM_M.LoadModel("Models/lampRM.obj");
+
+	lampHA_M = Model();
+	lampHA_M.LoadModel("Models/lapmHA.obj");
+
+	lampFG_M = Model();
+	lampFG_M.LoadModel("Models/lampFG.obj");
 
 	//personajes en movimiento
 	morty_M = Model();
@@ -2625,9 +2637,29 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		dado8_M.RenderModel();
 		 
+		//lampara RM
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-145.0f, 2.3f, -145.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(50.0f, 50.0f, 50.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampRM_M.RenderModel();
 
+		//lampara HA
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(145.0f, 2.3f, 145.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(17.0f, 17.0f, 17.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampHA_M.RenderModel();
 
-
+		//lampara FG
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(145.0f, 2.3f, -145.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(30.0f, 30.0f, 30.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampFG_M.RenderModel();
 
 		glUseProgram(0);
 
