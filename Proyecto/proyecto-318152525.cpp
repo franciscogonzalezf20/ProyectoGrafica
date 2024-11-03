@@ -1092,7 +1092,6 @@ int main()
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
-		dia = true;
 		stewie = true;
 
 		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
