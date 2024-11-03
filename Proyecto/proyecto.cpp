@@ -226,6 +226,11 @@ Texture RMsnowballD;
 Texture RMsnowballN;
 Texture RMsnowballI;
 Texture start;
+Texture casag;
+Texture pai;
+Texture pai2;
+Texture edif;
+Texture lim;
 
 /*
 Model Marceline_M;
@@ -827,6 +832,21 @@ int main()
 
 	start = Texture("Textures/start.png");
 	start.LoadTextureA();
+
+	casag = Texture("Textures/casag.tga");
+	casag.LoadTextureA();
+
+	edif = Texture("Textures/edif.tga");
+	edif.LoadTextureA();
+
+	pai = Texture("Textures/pai.tga");
+	pai.LoadTextureA();
+
+	pai2 = Texture("Textures/pai2.tga");
+	pai2.LoadTextureA();
+
+	lim = Texture("Textures/lim.tga");
+	lim.LoadTextureA();
 	// modelos
 	/*
 	Marceline_M = Model();
@@ -2246,6 +2266,66 @@ int main()
 			RMpaisaje2I.UseTexture();
 		}
 		//RMpaisaje2D.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//ediificos alrededor
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(225.0f, 45.0f, 140.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(180.0f, 1.0f, 90.0f));
+		modelaux = model;
+		casag.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//paisaje
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(1.27f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.55f, 1.0f, 1.0f));
+		modelaux = model;
+		pai.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//edifi
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 45.0f, 225.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(90.0f, 1.0f, 450.0f));
+		edif.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//lim
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-225.0f, 45.0f, 0.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(90.0f, 1.0f, 450.0f));
+		lim.UseTexture();
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		meshList[4]->RenderMesh();
+
+		//paisajeRM
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 45.0f, -225.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 0.0f, -1.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(90.0f, 1.0f, 450.0f));
+		pai2.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
