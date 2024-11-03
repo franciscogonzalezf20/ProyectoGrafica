@@ -56,6 +56,9 @@ float rothelicesOffset;
 float rotletreroOffset;
 float rotAvion;
 
+float movPerX, movPerZ, rotPer, rotOffset;
+bool caminaX, caminaZ;
+
 //dados
 float movdado;
 float rotardadoX;
@@ -224,16 +227,9 @@ Texture RMsnowballN;
 Texture RMsnowballI;
 Texture start;
 
-
+/*
 Model Marceline_M;
 Model FlameP_M;
-
-
-
-Model Arc_M;
-Model Letrero_M;
-Model Mapa_M;
-Model Dado_M;
 Model Arboles_M;
 Model Castle_M;
 Model Bee_M;
@@ -276,6 +272,7 @@ Model jasper_M;
 Model arbolesFG_M;
 Model arbolnavidadFG_M;
 Model rana_M;
+*/
 Model dado4_M;
 Model dado4ap_M;
 Model Stewie_M;
@@ -829,21 +826,8 @@ int main()
 
 	start = Texture("Textures/start.png");
 	start.LoadTextureA();
-
-
-	//Dado_M = Model();
-	//Dado_M.LoadModel("Models/dadobest.obj");
-	
-	Mapa_M = Model();
-	Mapa_M.LoadModel("Models/mapa.obj");
-
-	Arc_M = Model();
-	Arc_M.LoadModel("Models/arc.obj");
-	Arc_M = Model();
-	Arc_M.LoadModel("Models/arc.obj");
-	Letrero_M = Model();
-	Letrero_M.LoadModel("Models/letrero.obj");
-	
+	// modelos
+	/*
 	Marceline_M = Model();
 	Marceline_M.LoadModel("Models/marceline.obj");
 	FlameP_M = Model();
@@ -974,13 +958,15 @@ int main()
 	lampFG_M = Model();
 	lampFG_M.LoadModel("Models/lampFG.obj");
 
+	*/
+
 	//personajes en movimiento
 	morty_M = Model();
 	morty_M.LoadModel("Models/PeMorty.obj");
-
+	
 	fin_M = Model();
 	fin_M.LoadModel("Models/fin.obj");
-
+	
 
 	dado4_M = Model();
 	dado4_M.LoadModel("Models/dado4.obj");
@@ -995,12 +981,12 @@ int main()
 	Stewie_M.LoadModel("Models/stewie.obj");
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_dn.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_up.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_bk.tga");
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_ft.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_rt.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_lf.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_dn.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_up.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_bk.tga");
+	skyboxFaces.push_back("Textures/Skybox/cara_ft.tga");
 
 	skybox = Skybox(skyboxFaces);
 	Material_brillante = Material(4.0f, 256);
@@ -1064,7 +1050,6 @@ int main()
 	rotardadoX = 0.0f;
 	rotardadoY = 0.0f;
 	rotardadoZ = 0.0f;
-	movOffset = 3.0f;
 	movOffset2 = 0.2f;
 	rothelices = 2.0f;
 	rothelicesOffset = 9.0f;
@@ -1076,6 +1061,12 @@ int main()
 	rot2 = false;
 	rot3 = false;
 	let = true;
+
+	movOffset = 1.0f;
+	movPerX = 1.0f;
+	movPerZ = 1.0;
+	rotPer = 0.2f;
+	rotOffset = 1.0f;
 
 	movdado8 = 100.0f;
 	rotardado8X = 0.0f;
@@ -1104,7 +1095,6 @@ int main()
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
 		lastTime = now;
-		dia = true;
 		stewie = true;
 
 		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
@@ -1123,7 +1113,30 @@ int main()
 
 		//movimiento de personajes
 		if (stewie) {
+			if (caminaZ) {
+				if (movPerZ > -250) movPerZ -= movOffset * deltaTime;
+				else if (rotPer < 90 && rotPer >= 0) rotPer += rotOffset * deltaTime;
+				else caminaX = true;
+			}
 
+			else {
+				if (movPerZ < 0) movPerZ += movOffset * deltaTime;
+				else
+					if (rotPer < 270 && rotPer >= 180) rotPer += rotOffset * deltaTime;
+					else caminaX = false;
+			}
+
+			if (caminaX) {
+				if (movPerX < 250) movPerX += movOffset * deltaTime;
+				else if (rotPer < 180 && rotPer >= 90) rotPer += rotOffset * deltaTime;
+				else caminaZ = false;
+			}
+			else {
+				if (movPerX > 0) movPerX -= movOffset * deltaTime;
+				else if (rotPer < 360 && rotPer >= 270) rotPer += rotOffset * deltaTime;
+				else caminaZ = true;
+			}
+			if (rotPer > 360) rotPer = 0.0f;
 			//aqui se debe agregar que cada que el personaje este en una casilla a esta se le asigna i
 			// luminada=true; o cuando se detenga (para cada personaje), auqnue esto no es correcto del todo, ya que el codigo no sabe en que casilla esta
 			/*Cada que termine este personaje de caminar se asigna :
@@ -1163,7 +1176,6 @@ int main()
 			rotardado8Z = 0.0f; // Reiniciar la rotación
 			movdado8 = 100.0f;
 
-			printf("Número aleatorio generado dentro del H: %d, %d\n", dadoResultado, dadoResultado2);
 
 		}
 		if (movdado > 6.3f) {
@@ -1196,7 +1208,7 @@ int main()
 			case 0:
 				rotardado8X += 4.75f * deltaTime;
 				rotardado8Y += 8.38f * deltaTime;
-				printf("entro a 0 \n");
+			
 
 				break;
 				//cuando sale 2
@@ -1204,7 +1216,7 @@ int main()
 				rotardado8X -= 9.80f * deltaTime;
 				rotardado8Z -= 8.52f * deltaTime;
 				rotardado8Y -= 4.13f * deltaTime;
-				printf("entro a 1 \n");
+			
 
 				break;
 
@@ -1212,21 +1224,21 @@ int main()
 			case 2:
 				rotardado8Y += 10.3f * deltaTime;
 				rotardado8X += 7.0f * deltaTime;
-				printf("entro a 2 \n");
+			
 
 				break;
 				//cuando sale 4
 
 			case 3:
 				rotardado8X += 2.15f * deltaTime; //esta mal
-				printf("entro a 3 \n");
+			
 
 				break;
 				//cuando sale 5
 
 			case 4:
 				//// queda pendiente 
-				printf("entro a 4 \n");
+			
 
 				break;
 				//cuando sale 6
@@ -1234,7 +1246,7 @@ int main()
 			case 5:
 				rotardado8Y += 2.2f * deltaTime;
 				rotardado8X += 2.8f * deltaTime;
-				printf("entro a 5 \n");
+			
 
 				break;
 				//cuando sale 7
@@ -1309,119 +1321,7 @@ int main()
 				avanza = !avanza;
 			}
 		}
-		/*
-		if (glfwGetTime() > 5) {
-			if (letrr) {
-				if (movLetrero > -90.0f)
-				{
-					rotletrero += 4.0 * deltaTime;
-					movLetrero -= 1.0 * deltaTime;
-				}
-				else {
-					letrr = !letrr;
-				}
-			}
-			else
-			{
-				if (movLetrero < -0.1f)
-				{
-					rotletrero += 4.0 * deltaTime;
-					movLetrero += 1.0 * deltaTime;
-				}
-				else {
-					letrr = !letrr;
-				}
-			}*/
-
-			/*if (glfwGetTime() > 5) {
-				if (letrr) {
-					movLetrero = movOffset2 * deltaTime;
-
-					if (movLetrero < 0.0f && movLetrero > -1.0)
-					{
-						rotletrero += rotletreroOffset * deltaTime;
-						if (glfwGetTime() > 2) {
-							movLetrero = movOffset2 * deltaTime;
-						}
-					}
-					else if (movLetrero < -1.1f && movLetrero > -89.0) {
-						movLetrero=movOffset2*deltaTime;
-					}
-					else if (movLetrero <-89.1 && movLetrero > -90.0){
-						rotletrero += rotletreroOffset * deltaTime;
-						if (glfwGetTime() > 2) {
-							movLetrero = movOffset2 * deltaTime;
-						}
-					}
-					else {
-						letrr = !letrr;
-					}
-				}
-				else{
-						letrr = !letrr;
-				}
-
-			}*/
-
-			/*
-			if (glfwGetTime() > 5) {
-				//traslacion
-				if (letrr) {
-					if (glfwGetTime() == 5 + cont) {
-						movLetrero -= movOffset2 * deltaTime;
-						letrr = !letrr;
-						cont += 2;
-					}
-				}
-
-				else {
-					if (movLetrero < 0.0f) {
-						movLetrero += movOffset2 * deltaTime;
-					}
-					else letrr = !letrr;
-				}
-
-
-			}
-
-			printf("%.3f, %d \n", glfwGetTime(), cont);
-			if (glfwGetTime() > 5) {
-				//movLetrero = movOffset2 * deltaTime;
-				if (letrr) {
-					//movLetrero = movOffset2 * deltaTime;
-					if (movLetrero < 1.0f && movLetrero > -2.0) {
-						movLetrero += movOffset2 * deltaTime;   // Rotar
-						if (glfwGetTime() > 2 * cont) {
-								rotletrero += rotletreroOffset * deltaTime;
-								movLetrero -= movOffset2 * deltaTime;// Continuar movimiento
-								cont++;
-						}
-					}
-					else if (movLetrero <= -2.1f && movLetrero > -89.0) {
-						if (glfwGetTime() > 2*cont) {
-							movLetrero -= movOffset2 * deltaTime;// Continuar movimiento
-							cont++;
-						}
-					}
-					else if (movLetrero <= -89.1 && movLetrero > -91.0) {
-						 movLetrero = movOffset2 * deltaTime;  // Rotar
-						if (glfwGetTime() > 2*cont) {
-							rotletrero += rotletreroOffset * deltaTime;
-							movLetrero += movOffset2 * deltaTime;// Continuar movimiento
-							cont++;
-						}
-					}
-					else {
-						letrr = !letrr;  // Invertir la variable
-						  // Reiniciar el tiempo previo
-					}
-				}
-				else {
-					letrr = !letrr;  // Invertir la variable para repetir el proceso
-					 // Reiniciar el tiempo previo
-				}
-			}
-			*/
+		
 	
 
 		//Recibir eventos del usuario
@@ -2243,21 +2143,21 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
-		////Finn
-		//model = glm::mat4(1.0);
-		//model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
-		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
-		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//fin_M.RenderModel();
-
-		//Morty 
+		//Finn
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-110.0f, 2.0f, 135.0));
+		model = glm::translate(model, glm::vec3(-135.0f, 2.0f, 135.0));
 		model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		morty_M.RenderModel();
+		fin_M.RenderModel();
+
+		////Morty 
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(-110.0f, 2.0f, 135.0));
+		//model = glm::scale(model, glm::vec3(9.0f, 9.0f, 9.0f));
+		//model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//morty_M.RenderModel();
 
 		////Instancia de arboles
 		//model = glm::mat4(1.0);
@@ -2620,8 +2520,8 @@ int main()
 
 		//Stewie
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-125.0f, 6.0f, 130.0f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-125.0f + movPerX, 6.0f, 130.0f + movPerZ));
+		model = glm::rotate(model, (90 * toRadians) + (-rotPer * toRadians), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Stewie_M.RenderModel();
