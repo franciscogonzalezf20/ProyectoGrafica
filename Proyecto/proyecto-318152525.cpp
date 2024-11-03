@@ -75,8 +75,11 @@ bool rot2;
 bool rot3;
 
 //dia/noche/iluminada
-bool dia, noche, iluminada;
+bool iluminada;
 
+bool dia = true; // Estado inicial es día
+bool noche = false; // Controla si la noche está activa
+bool lastDayState = dia;
 //persoanje activo
 bool fin, stewie, morty; 
 
@@ -305,31 +308,35 @@ static const char* vShader = "shaders/shader_light.vert";
 // Fragment Shader
 static const char* fShader = "shaders/shader_light.frag";
 
-//// Definición de texturas del skybox 
-//std::vector<std::string> skyboxFacesDia = {
-//	"Textures/Skybox/cara_rt.tga",
-//	"Textures/Skybox/cara_lf.tga",
-//	"Textures/Skybox/cara_dn.tga",
-//	"Textures/Skybox/cara_up.tga", 
-//	"Textures/Skybox/cara_bk.tga", 
-//	"Textures/Skybox/cara_ft.tga" }; 
-//std::vector<std::string> skyboxFacesNoche = { 
-//	"Textures/SkyboxNoche/caraNoche_rt.tga", 
-//	"Textures/SkyboxNoche/caraNoche_lf.tga", 
-//	"Textures/SkyboxNoche/caraNoche_dn.tga", 
-//	"Textures/SkyboxNoche/caraNoche_up.tga", 
-//	"Textures/SkyboxNoche/caraNoche_bk.tga", 
-//	"Textures/SkyboxNoche/caraNoche_ft.tga" }; 
-//
-//// Función para actualizar el skybox 
-//void actualizarSkybox(bool dia, bool noche) { 
-//	if (dia) { 
-//		skybox = Skybox(skyboxFacesDia); 
-//	} 
-//	else if (noche) { 
-//		skybox = Skybox(skyboxFacesNoche); 
-//	} 
-//}
+// Definición de texturas del skybox 
+std::vector<std::string> skyboxFacesDia = {
+	"Textures/Skybox/cara_rt.tga",
+	"Textures/Skybox/cara_lf.tga",
+	"Textures/Skybox/cara_dn.tga",
+	"Textures/Skybox/cara_up.tga",
+	"Textures/Skybox/cara_bk.tga",
+	"Textures/Skybox/cara_ft.tga" };
+std::vector<std::string> skyboxFacesNoche = {
+	"Textures/SkyboxNoche/caraNoche_rt.tga",
+	"Textures/SkyboxNoche/caraNoche_lf.tga",
+	"Textures/SkyboxNoche/caraNoche_dn.tga",
+	"Textures/SkyboxNoche/caraNoche_up.tga",
+	"Textures/SkyboxNoche/caraNoche_bk.tga",
+	"Textures/SkyboxNoche/caraNoche_ft.tga" };
+
+// Función para actualizar el skybox 
+void actualizarSkybox() {
+	if (dia != lastDayState) { // Solo actualizar si el estado ha cambiado
+		if (dia) {
+			skybox = Skybox(skyboxFacesDia);
+		}
+		else {
+			skybox = Skybox(skyboxFacesNoche);
+		}
+		lastDayState = dia; // Actualizar el estado anterior
+	}
+}
+
 
 //función de calculo de normales por promedio de vértices 
 void calcAverageNormals(unsigned int* indices, unsigned int indiceCount, GLfloat* vertices, unsigned int verticeCount,
@@ -1076,7 +1083,7 @@ int main()
 
 
 
-	 
+	  
 
 	while (!mainWindow.getShouldClose())
 	{
@@ -1088,17 +1095,18 @@ int main()
 		dia = true;
 		stewie = true;
 
-		if (mainWindow.getsKeys()[GLFW_KEY_I]){
-			dia = true;
-			noche = false;
+		actualizarSkybox(); // Mover aquí para que se actualice con la lógica de entrada
+		if (mainWindow.getsKeys()[GLFW_KEY_N]) { // Si se presiona 'N'
+			dia = false; // Cambiar a noche
+			noche = true; // Activar la noche
 			iluminada = false;
 		}
-		if (mainWindow.getsKeys()[GLFW_KEY_N]) {
-			dia = false;
-			noche = true;
+		if (mainWindow.getsKeys()[GLFW_KEY_I]) { // Si se presiona 'O'
+			noche = false; // Desactivar la noche
+			dia = true; // Volver al día
 			iluminada = false;
-		}
 
+		}
 		//actualizarSkybox(dia, noche);
 
 		//movimiento de personajes
