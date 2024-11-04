@@ -232,7 +232,7 @@ Texture pai2;
 Texture edif;
 Texture lim;
 
-Model Marceline_M;
+/*Model Marceline_M;
 Model FlameP_M;
 Model Arboles_M;
 Model Castle_M;
@@ -275,7 +275,7 @@ Model toro_M;
 Model jasper_M;
 Model arbolesFG_M;
 Model arbolnavidadFG_M;
-Model rana_M;
+Model rana_M;*/
 
 Model dado4_M;
 Model dado4ap_M;
@@ -848,7 +848,7 @@ int main()
 	lim.LoadTextureA();
 	// modelos
 	
-	Marceline_M = Model();
+	/*Marceline_M = Model();
 	Marceline_M.LoadModel("Models/marceline.obj");
 	FlameP_M = Model();
 	FlameP_M.LoadModel("Models/fameprinces.obj");
@@ -968,7 +968,7 @@ int main()
 
 	rana_M = Model();
 	rana_M.LoadModel("Models/rana.obj");
-	
+	*/
 	lampRM_M = Model();
 	lampRM_M.LoadModel("Models/lampRM.obj");
 
@@ -2279,7 +2279,8 @@ int main()
 		modelaux = model;
 		casag.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
@@ -2290,7 +2291,8 @@ int main()
 		modelaux = model;
 		pai.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
@@ -2301,8 +2303,10 @@ int main()
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, -1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(90.0f, 1.0f, 450.0f));
 		edif.UseTexture();
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); 
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
@@ -2314,7 +2318,8 @@ int main()
 		model = glm::scale(model, glm::vec3(90.0f, 1.0f, 450.0f));
 		lim.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
@@ -2326,7 +2331,8 @@ int main()
 		model = glm::scale(model, glm::vec3(90.0f, 1.0f, 450.0f));
 		pai2.UseTexture();
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[4]->RenderMesh();
 
@@ -2345,7 +2351,7 @@ int main()
 		model = glm::rotate(model, (180 * toRadians) + (-rotPer * toRadians), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		morty_M.RenderModel();
-
+		/*
 		//Instancia de arboles
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(96.0f, -13.0f, -165.0));
@@ -2682,7 +2688,7 @@ int main()
 		model = glm::scale(model, glm::vec3(40.0f, 40.0f, 40.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		jasper_M.RenderModel();
-
+		*/
 		//dado4
 		if (dadoResultado != 3){
 		model = glm::mat4(1.0);
